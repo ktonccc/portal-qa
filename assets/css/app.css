@@ -74,6 +74,20 @@ footer {
     position: relative;
 }
 
+.debt-table tbody tr td:first-child {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.debt-table tbody tr td:first-child .form-check-input {
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 1.1rem;
+    height: 1.1rem;
+    position: relative;
+    top: 0;
+}
+
 .alert-icon {
     font-size: 2.5rem;
 }
