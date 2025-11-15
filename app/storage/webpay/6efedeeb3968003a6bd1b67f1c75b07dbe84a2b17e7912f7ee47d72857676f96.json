@@ -1,0 +1,33 @@
+{
+    "token": "12314124c226bdb19f6f096291b1c8032753959ce9e2ba753815fa1007155dec",
+    "buy_order": "4-1762798444",
+    "session_id": "",
+    "created_at": 1762798445,
+    "rut": "168154410",
+    "email": "wherreraosorio@gmail.com",
+    "amount": 11000,
+    "selected_ids": [
+        "4"
+    ],
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "4",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 11000
+        }
+    ],
+    "webpay": {
+        "request": {
+            "generated_at": "2025-11-10T18:14:05+00:00",
+            "url": "https://webpay3g.transbank.cl:443/webpayserver/initTransaction",
+            "token": "12314124c226bdb19f6f096291b1c8032753959ce9e2ba753815fa1007155dec"
+        },
+        "responses": []
+    },
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    }
+}

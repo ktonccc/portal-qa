@@ -1,0 +1,40 @@
+{
+    "token": "9A54EAFF7325A48DD568C2E1AEEEB77129E3599G",
+    "flow_order": 4469427,
+    "commerce_order": "HN-13-1762645318",
+    "rut": "79103853",
+    "email": "ktonccc@gmail.com",
+    "amount": 18900,
+    "selected_ids": [
+        "13"
+    ],
+    "created_at": 1762645319,
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "13",
+            "mes": "11",
+            "ano": "2025",
+            "amount": 18900
+        }
+    ],
+    "optional_payload": {
+        "rut": "7.910.385-3",
+        "email": "ktonccc@gmail.com",
+        "canal": "FLOW",
+        "total": 18900,
+        "idcliente": "13",
+        "idempresa": "764430824",
+        "cliente": "GLORIA DEL CARMEN ORDENES ARRIAGADA",
+        "servicio": "INTERNET FTTH 300Mbps + ZAPPING NACIONAL",
+        "mes": "11",
+        "ano": "2025",
+        "monto": 18900
+    },
+    "optional_encoded": "{\"rut\":\"7.910.385-3\",\"email\":\"ktonccc@gmail.com\",\"canal\":\"FLOW\",\"total\":18900,\"idcliente\":\"13\",\"idempresa\":\"764430824\",\"cliente\":\"GLORIA DEL CARMEN ORDENES ARRIAGADA\",\"mes\":\"11\",\"ano\":\"2025\",\"monto\":18900}",
+    "optional_truncated": true,
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    }
+}

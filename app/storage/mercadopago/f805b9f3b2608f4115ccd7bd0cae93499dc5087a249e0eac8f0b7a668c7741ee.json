@@ -1,0 +1,26 @@
+{
+    "transaction_id": "mp-375f15c5e1d37eda1061",
+    "rut": "168154410",
+    "email": "ktonccc@gmail.com",
+    "amount": 15000,
+    "selected_ids": [
+        "6"
+    ],
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "6",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 15000
+        }
+    ],
+    "created_at": 1762799166,
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    },
+    "mercadopago": {
+        "responses": []
+    }
+}

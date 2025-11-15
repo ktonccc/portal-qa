@@ -1,0 +1,82 @@
+{
+    "token": "91E6FFDFF0C6FC2A1103305C2463691480878E9G",
+    "flow_order": 4440173,
+    "commerce_order": "HN-6-7-1762437312",
+    "rut": "168154410",
+    "email": "ktonccc@gmail.com",
+    "amount": 2000,
+    "selected_ids": [
+        "6",
+        "7"
+    ],
+    "created_at": 1762437312,
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "6",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 1000
+        },
+        {
+            "idempresa": "764430824",
+            "idcliente": "7",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 1000
+        }
+    ],
+    "optional_payload": {
+        "rut": "16.815.441-0",
+        "email": "ktonccc@gmail.com",
+        "canal": "FLOW",
+        "total": 2000,
+        "idcliente": "6,7",
+        "idempresa": "764430824",
+        "cliente": "NICOLAS ALBERTO JARA HORLACHER",
+        "servicio": "INTERNET FTTH 500Mbps, INTERNET FTTH 700Mbps"
+    },
+    "optional_encoded": "{\"rut\":\"16.815.441-0\",\"email\":\"ktonccc@gmail.com\",\"canal\":\"FLOW\",\"total\":2000,\"idcliente\":\"6,7\",\"idempresa\":\"764430824\",\"cliente\":\"NICOLAS ALBERTO JARA HORLACHER\",\"servicio\":\"INTERNET FTTH 500Mbps, INTERNET FTTH 700Mbps\"}",
+    "optional_truncated": false,
+    "ingresar_pago": {
+        "processed": true,
+        "attempts": [],
+        "processed_at": 1762437347,
+        "responses": [
+            {
+                "payload": {
+                    "IdEmpresa": "764430824",
+                    "IdCliente": 6,
+                    "RutCliente": "16.815.441-0",
+                    "Mail": "ktonccc@gmail.com",
+                    "Canal": "FLOW",
+                    "FechaPago": "2025-11-06 10:55:45",
+                    "FechaContable": "2025-11-07 00:00:00",
+                    "Mes": 5,
+                    "Ano": 2025,
+                    "Monto": 1000
+                },
+                "envelope": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.homenet.cl\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ws:IngresarPago soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n         <IdEmpresa xsi:type=\"xsd:string\">764430824</IdEmpresa>\n         <IdCliente xsi:type=\"xsd:int\">6</IdCliente>\n         <RutCliente xsi:type=\"xsd:string\">16.815.441-0</RutCliente>\n         <Mail xsi:type=\"xsd:string\">ktonccc@gmail.com</Mail>\n         <Canal xsi:type=\"xsd:string\">FLOW</Canal>\n         <FechaPago xsi:type=\"xsd:string\">2025-11-06 10:55:45</FechaPago>\n         <FechaContable xsi:type=\"xsd:string\">2025-11-07 00:00:00</FechaContable>\n         <Mes xsi:type=\"xsd:int\">5</Mes>\n         <Ano xsi:type=\"xsd:int\">2025</Ano>\n         <Monto xsi:type=\"xsd:int\">1000</Monto>\n      </ws:IngresarPago>\n   </soapenv:Body>\n</soapenv:Envelope>",
+                "response": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><SOAP-ENV:Envelope SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\"><SOAP-ENV:Body><ns1:IngresarPagoResponse xmlns:ns1=\"http://ws.homenet.cl\"><return xsi:type=\"xsd:string\">3</return></ns1:IngresarPagoResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>",
+                "http_status": 200
+            },
+            {
+                "payload": {
+                    "IdEmpresa": "764430824",
+                    "IdCliente": 7,
+                    "RutCliente": "16.815.441-0",
+                    "Mail": "ktonccc@gmail.com",
+                    "Canal": "FLOW",
+                    "FechaPago": "2025-11-06 10:55:45",
+                    "FechaContable": "2025-11-07 00:00:00",
+                    "Mes": 5,
+                    "Ano": 2025,
+                    "Monto": 1000
+                },
+                "envelope": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.homenet.cl\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ws:IngresarPago soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n         <IdEmpresa xsi:type=\"xsd:string\">764430824</IdEmpresa>\n         <IdCliente xsi:type=\"xsd:int\">7</IdCliente>\n         <RutCliente xsi:type=\"xsd:string\">16.815.441-0</RutCliente>\n         <Mail xsi:type=\"xsd:string\">ktonccc@gmail.com</Mail>\n         <Canal xsi:type=\"xsd:string\">FLOW</Canal>\n         <FechaPago xsi:type=\"xsd:string\">2025-11-06 10:55:45</FechaPago>\n         <FechaContable xsi:type=\"xsd:string\">2025-11-07 00:00:00</FechaContable>\n         <Mes xsi:type=\"xsd:int\">5</Mes>\n         <Ano xsi:type=\"xsd:int\">2025</Ano>\n         <Monto xsi:type=\"xsd:int\">1000</Monto>\n      </ws:IngresarPago>\n   </soapenv:Body>\n</soapenv:Envelope>",
+                "response": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><SOAP-ENV:Envelope SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\"><SOAP-ENV:Body><ns1:IngresarPagoResponse xmlns:ns1=\"http://ws.homenet.cl\"><return xsi:type=\"xsd:string\">3</return></ns1:IngresarPagoResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>",
+                "http_status": 200
+            }
+        ]
+    }
+}

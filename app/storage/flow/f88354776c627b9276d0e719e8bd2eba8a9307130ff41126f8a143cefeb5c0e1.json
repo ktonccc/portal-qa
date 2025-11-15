@@ -1,0 +1,63 @@
+{
+    "token": "63BFE1D0B0FF34E9FFFEA81E614F8A0451036E7P",
+    "flow_order": 4461652,
+    "commerce_order": "HN-56-1762561000",
+    "rut": "166349583",
+    "email": "ktonccc@gmail.com",
+    "amount": 1000,
+    "selected_ids": [
+        "56"
+    ],
+    "created_at": 1762561001,
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "56",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 1000
+        }
+    ],
+    "optional_payload": {
+        "rut": "16.634.958-3",
+        "email": "ktonccc@gmail.com",
+        "canal": "FLOW",
+        "total": 1000,
+        "idcliente": "56",
+        "idempresa": "764430824",
+        "cliente": "JUANA DEL CARMEN LLANQUINAO HUEHUENTRO",
+        "servicio": "INTERNET AIR 20 MEGA",
+        "mes": "5",
+        "ano": "2025",
+        "monto": 1000
+    },
+    "optional_encoded": "{\"rut\":\"16.634.958-3\",\"email\":\"ktonccc@gmail.com\",\"canal\":\"FLOW\",\"total\":1000,\"idcliente\":\"56\",\"idempresa\":\"764430824\",\"cliente\":\"JUANA DEL CARMEN LLANQUINAO HUEHUENTRO\",\"servicio\":\"INTERNET AIR 20 MEGA\",\"mes\":\"5\",\"ano\":\"2025\",\"monto\":1000}",
+    "optional_truncated": false,
+    "ingresar_pago": {
+        "processed": true,
+        "attempts": [],
+        "processed_at": 1762561080,
+        "responses": [
+            {
+                "payload": {
+                    "IdEmpresa": "764430824",
+                    "IdCliente": 56,
+                    "RutCliente": "166349583",
+                    "Mail": "ktonccc@gmail.com",
+                    "Recaudador": "Flow",
+                    "Canal": "Webpay",
+                    "FechaPago": "07-11-2025",
+                    "FechaContable": "10-11-2025",
+                    "Mes": 5,
+                    "Ano": 2025,
+                    "Monto": 1000,
+                    "MontoFlow": 962
+                },
+                "envelope": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.homenet.cl\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ws:IngresarPago soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n         <IdEmpresa xsi:type=\"xsd:string\">764430824</IdEmpresa>\n         <IdCliente xsi:type=\"xsd:int\">56</IdCliente>\n         <RutCliente xsi:type=\"xsd:string\">166349583</RutCliente>\n         <Mail xsi:type=\"xsd:string\">ktonccc@gmail.com</Mail>\n         <Recaudador xsi:type=\"xsd:string\">Flow</Recaudador>\n         <Canal xsi:type=\"xsd:string\">Webpay</Canal>\n         <FechaPago xsi:type=\"xsd:string\">07-11-2025</FechaPago>\n         <FechaContable xsi:type=\"xsd:string\">10-11-2025</FechaContable>\n         <Mes xsi:type=\"xsd:int\">5</Mes>\n         <Ano xsi:type=\"xsd:int\">2025</Ano>\n         <Monto xsi:type=\"xsd:int\">1000</Monto>\n         <MontoFlow xsi:type=\"xsd:int\">962</MontoFlow>\n      </ws:IngresarPago>\n   </soapenv:Body>\n</soapenv:Envelope>",
+                "response": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><SOAP-ENV:Envelope SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\"><SOAP-ENV:Body><ns1:IngresarPagoResponse xmlns:ns1=\"http://ws.homenet.cl\"><return xsi:type=\"xsd:string\">1</return></ns1:IngresarPagoResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>",
+                "http_status": 200,
+                "wsdl": "http://ws.homenet.cl/Test_HN_2025.php?wsdl"
+            }
+        ]
+    }
+}

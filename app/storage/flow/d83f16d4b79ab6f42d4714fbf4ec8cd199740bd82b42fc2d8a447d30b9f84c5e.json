@@ -1,0 +1,63 @@
+{
+    "token": "C6596EA881F5341FC4E848D0FC494E2035874BCX",
+    "flow_order": 4541890,
+    "commerce_order": "HN-2025-1763152438",
+    "rut": "136080415",
+    "email": "gerencia@fullnetchile.cl",
+    "amount": 25000,
+    "selected_ids": [
+        "2025"
+    ],
+    "created_at": 1763152440,
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "2025",
+            "mes": "11",
+            "ano": "2025",
+            "amount": 25000
+        }
+    ],
+    "optional_payload": {
+        "rut": "13.608.041-5",
+        "email": "gerencia@fullnetchile.cl",
+        "canal": "FLOW",
+        "total": 25000,
+        "idcliente": "2025",
+        "idempresa": "764430824",
+        "cliente": "LILA CORTES ROMERO",
+        "servicio": "INTERNET FTTH 1Gbps",
+        "mes": "11",
+        "ano": "2025",
+        "monto": 25000
+    },
+    "optional_encoded": "{\"rut\":\"13.608.041-5\",\"canal\":\"FLOW\",\"total\":25000,\"idcliente\":\"2025\",\"idempresa\":\"764430824\",\"mes\":\"11\",\"ano\":\"2025\",\"monto\":25000}",
+    "optional_truncated": true,
+    "ingresar_pago": {
+        "processed": true,
+        "attempts": [],
+        "processed_at": 1763152542,
+        "responses": [
+            {
+                "payload": {
+                    "IdEmpresa": "764430824",
+                    "IdCliente": 2025,
+                    "RutCliente": "136080415",
+                    "Mail": "gerencia@fullnetchile.cl",
+                    "Recaudador": "Flow",
+                    "Canal": "RedPay",
+                    "FechaPago": "14-11-2025",
+                    "FechaContable": "19-11-2025",
+                    "Mes": 11,
+                    "Ano": 2025,
+                    "Monto": 25000,
+                    "MontoFlow": 24140
+                },
+                "envelope": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.homenet.cl\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ws:IngresarPago soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n         <IdEmpresa xsi:type=\"xsd:string\">764430824</IdEmpresa>\n         <IdCliente xsi:type=\"xsd:int\">2025</IdCliente>\n         <RutCliente xsi:type=\"xsd:string\">136080415</RutCliente>\n         <Mail xsi:type=\"xsd:string\">gerencia@fullnetchile.cl</Mail>\n         <Recaudador xsi:type=\"xsd:string\">Flow</Recaudador>\n         <Canal xsi:type=\"xsd:string\">RedPay</Canal>\n         <FechaPago xsi:type=\"xsd:string\">14-11-2025</FechaPago>\n         <FechaContable xsi:type=\"xsd:string\">19-11-2025</FechaContable>\n         <Mes xsi:type=\"xsd:int\">11</Mes>\n         <Ano xsi:type=\"xsd:int\">2025</Ano>\n         <Monto xsi:type=\"xsd:int\">25000</Monto>\n         <MontoFlow xsi:type=\"xsd:int\">24140</MontoFlow>\n      </ws:IngresarPago>\n   </soapenv:Body>\n</soapenv:Envelope>",
+                "response": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><SOAP-ENV:Envelope SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\"><SOAP-ENV:Body><ns1:IngresarPagoResponse xmlns:ns1=\"http://ws.homenet.cl\"><return xsi:type=\"xsd:string\">1</return></ns1:IngresarPagoResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>",
+                "http_status": 200,
+                "wsdl": "http://ws.homenet.cl/Test_HN_2025.php?wsdl"
+            }
+        ]
+    }
+}

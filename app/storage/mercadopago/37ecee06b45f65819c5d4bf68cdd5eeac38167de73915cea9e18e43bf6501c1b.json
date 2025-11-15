@@ -1,0 +1,453 @@
+{
+    "transaction_id": "mp-7f1f2022410a4b4e9754",
+    "rut": "168154410",
+    "email": "ktonccc@gmail.com",
+    "amount": 15000,
+    "selected_ids": [
+        "6"
+    ],
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "6",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 15000
+        }
+    ],
+    "created_at": 1762823782,
+    "ingresar_pago": {
+        "processed": true,
+        "attempts": [],
+        "processed_at": 1762823794,
+        "responses": [
+            {
+                "payload": {
+                    "IdEmpresa": "764430824",
+                    "IdCliente": 6,
+                    "RutCliente": "168154410",
+                    "Mail": "ktonccc@gmail.com",
+                    "Recaudador": "MercadoPago",
+                    "Canal": "MPAGO",
+                    "FechaPago": "11-11-2025",
+                    "FechaContable": "11-11-2025",
+                    "Mes": 5,
+                    "Ano": 2025,
+                    "Monto": 15000,
+                    "MontoFlow": 14430
+                },
+                "envelope": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.homenet.cl\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ws:IngresarPago soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n         <IdEmpresa xsi:type=\"xsd:string\">764430824</IdEmpresa>\n         <IdCliente xsi:type=\"xsd:int\">6</IdCliente>\n         <RutCliente xsi:type=\"xsd:string\">168154410</RutCliente>\n         <Mail xsi:type=\"xsd:string\">ktonccc@gmail.com</Mail>\n         <Recaudador xsi:type=\"xsd:string\">MercadoPago</Recaudador>\n         <Canal xsi:type=\"xsd:string\">MPAGO</Canal>\n         <FechaPago xsi:type=\"xsd:string\">11-11-2025</FechaPago>\n         <FechaContable xsi:type=\"xsd:string\">11-11-2025</FechaContable>\n         <Mes xsi:type=\"xsd:int\">5</Mes>\n         <Ano xsi:type=\"xsd:int\">2025</Ano>\n         <Monto xsi:type=\"xsd:int\">15000</Monto>\n         <MontoFlow xsi:type=\"xsd:int\">14430</MontoFlow>\n      </ws:IngresarPago>\n   </soapenv:Body>\n</soapenv:Envelope>",
+                "response": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><SOAP-ENV:Envelope SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\"><SOAP-ENV:Body><ns1:IngresarPagoResponse xmlns:ns1=\"http://ws.homenet.cl\"><return xsi:type=\"xsd:string\">1</return></ns1:IngresarPagoResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>",
+                "http_status": 200,
+                "wsdl": "http://ws.homenet.cl/Test_HN_2025.php?wsdl"
+            }
+        ]
+    },
+    "mercadopago": {
+        "responses": [
+            {
+                "timestamp": 1762823794,
+                "source": "webhook",
+                "response": {
+                    "accounts_info": null,
+                    "additional_info": {
+                        "ip_address": "200.126.36.2",
+                        "items": [
+                            {
+                                "description": "Contrato 6",
+                                "id": "6",
+                                "quantity": "1",
+                                "title": "INTERNET FTTH 500Mbps",
+                                "unit_price": "15000"
+                            }
+                        ],
+                        "payer": {
+                            "first_name": "NICOLAS ALBERTO JARA HORLACHER"
+                        },
+                        "tracking_id": "platform:v1-blacklabel,so:ALL,type:N/A,security:none"
+                    },
+                    "authorization_code": "301299",
+                    "binary_mode": true,
+                    "brand_id": null,
+                    "build_version": "3.130.1-hotfix-12",
+                    "call_for_authorize_id": null,
+                    "captured": true,
+                    "card": {
+                        "bin": "41688188",
+                        "cardholder": {
+                            "identification": {
+                                "number": null,
+                                "type": null
+                            },
+                            "name": "APRO"
+                        },
+                        "country": null,
+                        "date_created": "2025-11-10T21:16:33.000-04:00",
+                        "date_last_updated": "2025-11-10T21:16:33.000-04:00",
+                        "expiration_month": 11,
+                        "expiration_year": 2030,
+                        "first_six_digits": "416881",
+                        "id": "9713576652",
+                        "last_four_digits": "7115",
+                        "tags": [
+                            "credit"
+                        ]
+                    },
+                    "charges_details": [
+                        {
+                            "accounts": {
+                                "from": "collector",
+                                "to": "mp"
+                            },
+                            "amounts": {
+                                "original": 570,
+                                "refunded": 0
+                            },
+                            "client_id": 0,
+                            "date_created": "2025-11-10T21:16:33.000-04:00",
+                            "external_charge_id": "01K9R7RTCB673AM84Y4HSSFF40",
+                            "id": "132740554983-001",
+                            "last_updated": "2025-11-10T21:16:33.000-04:00",
+                            "metadata": {
+                                "reason": "",
+                                "source": "proc-svc-charges",
+                                "source_detail": "processing_fee_charge"
+                            },
+                            "name": "mercadopago_fee",
+                            "refund_charges": [],
+                            "reserve_id": null,
+                            "type": "fee"
+                        }
+                    ],
+                    "charges_execution_info": {
+                        "internal_execution": {
+                            "date": "2025-11-10T21:16:33.045-04:00",
+                            "execution_id": "01K9R7RTBP48E858N97N3PB2JF"
+                        }
+                    },
+                    "collector_id": 2980326481,
+                    "corporation_id": null,
+                    "counter_currency": null,
+                    "coupon_amount": 0,
+                    "currency_id": "CLP",
+                    "date_approved": "2025-11-10T21:16:33.000-04:00",
+                    "date_created": "2025-11-10T21:16:33.000-04:00",
+                    "date_last_updated": "2025-11-10T21:16:33.000-04:00",
+                    "date_of_expiration": null,
+                    "deduction_schema": null,
+                    "description": "INTERNET FTTH 500Mbps",
+                    "differential_pricing_id": null,
+                    "external_reference": "mp-7f1f2022410a4b4e9754",
+                    "fee_details": [
+                        {
+                            "amount": 570,
+                            "fee_payer": "collector",
+                            "type": "mercadopago_fee"
+                        }
+                    ],
+                    "financing_group": null,
+                    "id": 132740554983,
+                    "installments": 1,
+                    "integrator_id": null,
+                    "issuer_id": "168",
+                    "live_mode": true,
+                    "marketplace_owner": null,
+                    "merchant_account_id": null,
+                    "merchant_number": null,
+                    "metadata": {
+                        "rut": "168154410",
+                        "transaction_id": "mp-7f1f2022410a4b4e9754",
+                        "selected_ids": [
+                            "6"
+                        ]
+                    },
+                    "money_release_date": "2025-11-10T21:16:33.000-04:00",
+                    "money_release_schema": null,
+                    "money_release_status": "released",
+                    "notification_url": "https://pagos2.homenet.cl/mercadopago_process.php",
+                    "operation_type": "regular_payment",
+                    "order": {
+                        "id": "35479230988",
+                        "type": "mercadopago"
+                    },
+                    "payer": {
+                        "email": "test_user_38920340467005489@testuser.com",
+                        "entity_type": null,
+                        "first_name": null,
+                        "id": "2977405996",
+                        "identification": {
+                            "number": "11111111-1",
+                            "type": "RUT"
+                        },
+                        "last_name": null,
+                        "operator_id": null,
+                        "phone": {
+                            "number": null,
+                            "extension": null,
+                            "area_code": null
+                        },
+                        "type": null
+                    },
+                    "payment_method": {
+                        "data": {
+                            "routing_data": {
+                                "merchant_account_id": "00192492"
+                            }
+                        },
+                        "id": "visa",
+                        "issuer_id": "168",
+                        "type": "credit_card"
+                    },
+                    "payment_method_id": "visa",
+                    "payment_type_id": "credit_card",
+                    "platform_id": null,
+                    "point_of_interaction": {
+                        "application_data": {
+                            "name": "checkout-off",
+                            "operating_system": null,
+                            "version": "v2"
+                        },
+                        "business_info": {
+                            "branch": "Merchant Services",
+                            "sub_unit": "checkout_pro",
+                            "unit": "online_payments"
+                        },
+                        "transaction_data": {
+                            "e2e_id": null
+                        },
+                        "type": "CHECKOUT"
+                    },
+                    "pos_id": null,
+                    "processing_mode": "aggregator",
+                    "refunds": [],
+                    "release_info": null,
+                    "shipping_amount": 0,
+                    "sponsor_id": null,
+                    "statement_descriptor": "Mercadopago*fake",
+                    "status": "approved",
+                    "status_detail": "accredited",
+                    "store_id": null,
+                    "tags": null,
+                    "taxes_amount": 0,
+                    "transaction_amount": 15000,
+                    "transaction_amount_refunded": 0,
+                    "transaction_details": {
+                        "acquirer_reference": null,
+                        "external_resource_url": null,
+                        "financial_institution": null,
+                        "installment_amount": 15000,
+                        "net_received_amount": 14430,
+                        "overpaid_amount": 0,
+                        "payable_deferral_period": null,
+                        "payment_method_reference_id": null,
+                        "total_paid_amount": 15000
+                    }
+                }
+            },
+            {
+                "timestamp": 1762823794,
+                "source": "webhook",
+                "response": {
+                    "accounts_info": null,
+                    "additional_info": {
+                        "ip_address": "200.126.36.2",
+                        "items": [
+                            {
+                                "description": "Contrato 6",
+                                "id": "6",
+                                "quantity": "1",
+                                "title": "INTERNET FTTH 500Mbps",
+                                "unit_price": "15000"
+                            }
+                        ],
+                        "payer": {
+                            "first_name": "NICOLAS ALBERTO JARA HORLACHER"
+                        },
+                        "tracking_id": "platform:v1-blacklabel,so:ALL,type:N/A,security:none"
+                    },
+                    "authorization_code": "301299",
+                    "binary_mode": true,
+                    "brand_id": null,
+                    "build_version": "3.130.1-hotfix-12",
+                    "call_for_authorize_id": null,
+                    "captured": true,
+                    "card": {
+                        "bin": "41688188",
+                        "cardholder": {
+                            "identification": {
+                                "number": null,
+                                "type": null
+                            },
+                            "name": "APRO"
+                        },
+                        "country": null,
+                        "date_created": "2025-11-10T21:16:33.000-04:00",
+                        "date_last_updated": "2025-11-10T21:16:33.000-04:00",
+                        "expiration_month": 11,
+                        "expiration_year": 2030,
+                        "first_six_digits": "416881",
+                        "id": "9713576652",
+                        "last_four_digits": "7115",
+                        "tags": [
+                            "credit"
+                        ]
+                    },
+                    "charges_details": [
+                        {
+                            "accounts": {
+                                "from": "collector",
+                                "to": "mp"
+                            },
+                            "amounts": {
+                                "original": 570,
+                                "refunded": 0
+                            },
+                            "client_id": 0,
+                            "date_created": "2025-11-10T21:16:33.000-04:00",
+                            "external_charge_id": "01K9R7RTCB673AM84Y4HSSFF40",
+                            "id": "132740554983-001",
+                            "last_updated": "2025-11-10T21:16:33.000-04:00",
+                            "metadata": {
+                                "reason": "",
+                                "source": "proc-svc-charges",
+                                "source_detail": "processing_fee_charge"
+                            },
+                            "name": "mercadopago_fee",
+                            "refund_charges": [],
+                            "reserve_id": null,
+                            "type": "fee"
+                        }
+                    ],
+                    "charges_execution_info": {
+                        "internal_execution": {
+                            "date": "2025-11-10T21:16:33.045-04:00",
+                            "execution_id": "01K9R7RTBP48E858N97N3PB2JF"
+                        }
+                    },
+                    "collector_id": 2980326481,
+                    "corporation_id": null,
+                    "counter_currency": null,
+                    "coupon_amount": 0,
+                    "currency_id": "CLP",
+                    "date_approved": "2025-11-10T21:16:33.000-04:00",
+                    "date_created": "2025-11-10T21:16:33.000-04:00",
+                    "date_last_updated": "2025-11-10T21:16:33.000-04:00",
+                    "date_of_expiration": null,
+                    "deduction_schema": null,
+                    "description": "INTERNET FTTH 500Mbps",
+                    "differential_pricing_id": null,
+                    "external_reference": "mp-7f1f2022410a4b4e9754",
+                    "fee_details": [
+                        {
+                            "amount": 570,
+                            "fee_payer": "collector",
+                            "type": "mercadopago_fee"
+                        }
+                    ],
+                    "financing_group": null,
+                    "id": 132740554983,
+                    "installments": 1,
+                    "integrator_id": null,
+                    "issuer_id": "168",
+                    "live_mode": true,
+                    "marketplace_owner": null,
+                    "merchant_account_id": null,
+                    "merchant_number": null,
+                    "metadata": {
+                        "rut": "168154410",
+                        "transaction_id": "mp-7f1f2022410a4b4e9754",
+                        "selected_ids": [
+                            "6"
+                        ]
+                    },
+                    "money_release_date": "2025-11-10T21:16:33.000-04:00",
+                    "money_release_schema": null,
+                    "money_release_status": "released",
+                    "notification_url": "https://pagos2.homenet.cl/mercadopago_process.php",
+                    "operation_type": "regular_payment",
+                    "order": {
+                        "id": "35479230988",
+                        "type": "mercadopago"
+                    },
+                    "payer": {
+                        "email": "test_user_38920340467005489@testuser.com",
+                        "entity_type": null,
+                        "first_name": null,
+                        "id": "2977405996",
+                        "identification": {
+                            "number": "11111111-1",
+                            "type": "RUT"
+                        },
+                        "last_name": null,
+                        "operator_id": null,
+                        "phone": {
+                            "number": null,
+                            "extension": null,
+                            "area_code": null
+                        },
+                        "type": null
+                    },
+                    "payment_method": {
+                        "data": {
+                            "routing_data": {
+                                "merchant_account_id": "00192492"
+                            }
+                        },
+                        "id": "visa",
+                        "issuer_id": "168",
+                        "type": "credit_card"
+                    },
+                    "payment_method_id": "visa",
+                    "payment_type_id": "credit_card",
+                    "platform_id": null,
+                    "point_of_interaction": {
+                        "application_data": {
+                            "name": "checkout-off",
+                            "operating_system": null,
+                            "version": "v2"
+                        },
+                        "business_info": {
+                            "branch": "Merchant Services",
+                            "sub_unit": "checkout_pro",
+                            "unit": "online_payments"
+                        },
+                        "transaction_data": {
+                            "e2e_id": null
+                        },
+                        "type": "CHECKOUT"
+                    },
+                    "pos_id": null,
+                    "processing_mode": "aggregator",
+                    "refunds": [],
+                    "release_info": null,
+                    "shipping_amount": 0,
+                    "sponsor_id": null,
+                    "statement_descriptor": "Mercadopago*fake",
+                    "status": "approved",
+                    "status_detail": "accredited",
+                    "store_id": null,
+                    "tags": null,
+                    "taxes_amount": 0,
+                    "transaction_amount": 15000,
+                    "transaction_amount_refunded": 0,
+                    "transaction_details": {
+                        "acquirer_reference": null,
+                        "external_resource_url": null,
+                        "financial_institution": null,
+                        "installment_amount": 15000,
+                        "net_received_amount": 14430,
+                        "overpaid_amount": 0,
+                        "payable_deferral_period": null,
+                        "payment_method_reference_id": null,
+                        "total_paid_amount": 15000
+                    }
+                }
+            }
+        ]
+    },
+    "preference": {
+        "id": "2980326481-13ba8f87-e0d5-47ce-91b2-74a549ecba67",
+        "init_point": "https://www.mercadopago.cl/checkout/v1/redirect?pref_id=2980326481-13ba8f87-e0d5-47ce-91b2-74a549ecba67",
+        "sandbox_init_point": "https://sandbox.mercadopago.cl/checkout/v1/redirect?pref_id=2980326481-13ba8f87-e0d5-47ce-91b2-74a549ecba67"
+    }
+}

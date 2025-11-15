@@ -1,0 +1,128 @@
+.inter header{
+    background-color: #0055B8;
+}
+
+.inter header a:hover{
+    color:#7DD6FF;
+}
+
+.pagos-cont {
+    width: 100%;
+    max-width: 720px !important;
+    margin-left: auto;
+    margin-right: auto;
+	
+}
+
+@media screen and (max-width: 992px) {
+    .pagos-cont {
+        max-width: 640px !important;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .pagos-cont {
+        max-width: 100% !important;
+    }
+}
+
+.inter .btn-primary{
+	background-color:#0055B8;
+    border-color:#0074C9;
+}
+
+.inter .btn-primary:hover{
+	background-color:#0074C9;
+	cursor:pointer;
+}
+.inter .form-identifier-data .col-form-label{
+	background-color:#0055B8;
+}
+
+.inter .form-identifier-data{
+	border-bottom:1px solid #EBEBEB;
+}
+
+.inter .form-identifier-data{
+	color:#0055B8;
+}
+
+.hnet #medioPago .active{
+    border-color: #0055B8;
+}
+
+.hnet header{
+    background-color: #202125;
+}
+
+.hnet header a:hover{
+    color:#ffffff;
+}
+
+.hnet .btn-primary{
+	background-color:#0055B8;
+    border-color:#0074C9;
+}
+
+.hnet .btn-primary:hover{
+	background-color:#0074C9;
+	cursor:pointer;
+}
+.hnet .form-identifier-data .col-form-label{
+	background-color:#FE6A00;
+}
+
+.hnet .form-identifier-data{
+	color:#FE6A00;
+}
+
+.hnet #medioPago .active{
+    border-color: #FE6A00;
+}
+
+.hnet .error{
+
+}
+#medioPago label{
+    width: 100%;
+    border: 2px solid #6AB5C5;
+}
+
+.header-link{
+	font-size: 1.25em;
+	color:#009fe3;
+}
+
+
+.form-identifier{
+	padding:0;
+}
+
+.form-identifier .form-group{
+	padding:0 10px;
+}
+
+.form-identifier .float-right{
+	margin-right: 10px !important;
+}
+
+.banner{
+    height: auto;
+    clear: both;
+   	margin:0px auto 15px;
+	display:block;
+}
+
+.form-identifier-data .col-form-label{
+	color:#FFFFFF;
+	border-left:15px solid #FFFFFF;
+	border-right:15px solid #FFFFFF;
+}
+.form-identifier-data{
+	padding-bottom:15px;
+	padding-top:20px;
+}
+
+.form-control{
+		border-radius:0px !important;
+}

@@ -1,0 +1,63 @@
+{
+    "token": "68261519F55D1008B6BC72C837F70F9FE2E144AZ",
+    "flow_order": 4442487,
+    "commerce_order": "HN-4-1762446076",
+    "rut": "168154410",
+    "email": "ktonccc@gmail.com",
+    "amount": 1000,
+    "selected_ids": [
+        "4"
+    ],
+    "created_at": 1762446077,
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "4",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 1000
+        }
+    ],
+    "optional_payload": {
+        "rut": "16.815.441-0",
+        "email": "ktonccc@gmail.com",
+        "canal": "FLOW",
+        "total": 1000,
+        "idcliente": "4",
+        "idempresa": "764430824",
+        "cliente": "NICOLAS ALBERTO JARA HORLACHER",
+        "servicio": "INTERNET FTTH 300Mbps",
+        "mes": "5",
+        "ano": "2025",
+        "monto": 1000
+    },
+    "optional_encoded": "{\"rut\":\"16.815.441-0\",\"email\":\"ktonccc@gmail.com\",\"canal\":\"FLOW\",\"total\":1000,\"idcliente\":\"4\",\"idempresa\":\"764430824\",\"cliente\":\"NICOLAS ALBERTO JARA HORLACHER\",\"servicio\":\"INTERNET FTTH 300Mbps\",\"mes\":\"5\",\"ano\":\"2025\",\"monto\":1000}",
+    "optional_truncated": false,
+    "ingresar_pago": {
+        "processed": true,
+        "attempts": [],
+        "processed_at": 1762446124,
+        "responses": [
+            {
+                "payload": {
+                    "IdEmpresa": "764430824",
+                    "IdCliente": 4,
+                    "RutCliente": "168154410",
+                    "Mail": "ktonccc@gmail.com",
+                    "Recaudador": "Flow",
+                    "Canal": "Webpay",
+                    "FechaPago": "06-11-2025",
+                    "FechaContable": "07-11-2025",
+                    "Mes": 5,
+                    "Ano": 2025,
+                    "Monto": 1000,
+                    "MontoFlow": 32
+                },
+                "envelope": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.homenet.cl\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ws:IngresarPago soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n         <IdEmpresa xsi:type=\"xsd:string\">764430824</IdEmpresa>\n         <IdCliente xsi:type=\"xsd:int\">4</IdCliente>\n         <RutCliente xsi:type=\"xsd:string\">168154410</RutCliente>\n         <Mail xsi:type=\"xsd:string\">ktonccc@gmail.com</Mail>\n         <Recaudador xsi:type=\"xsd:string\">Flow</Recaudador>\n         <Canal xsi:type=\"xsd:string\">Webpay</Canal>\n         <FechaPago xsi:type=\"xsd:string\">06-11-2025</FechaPago>\n         <FechaContable xsi:type=\"xsd:string\">07-11-2025</FechaContable>\n         <Mes xsi:type=\"xsd:int\">5</Mes>\n         <Ano xsi:type=\"xsd:int\">2025</Ano>\n         <Monto xsi:type=\"xsd:int\">1000</Monto>\n         <MontoFlow xsi:type=\"xsd:int\">32</MontoFlow>\n      </ws:IngresarPago>\n   </soapenv:Body>\n</soapenv:Envelope>",
+                "response": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><SOAP-ENV:Envelope SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\"><SOAP-ENV:Body><ns1:IngresarPagoResponse xmlns:ns1=\"http://ws.homenet.cl\"><return xsi:type=\"xsd:string\">1</return></ns1:IngresarPagoResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>",
+                "http_status": 200,
+                "wsdl": "http://ws.homenet.cl/Test_HN_2025.php?wsdl"
+            }
+        ]
+    }
+}

@@ -1,0 +1,107 @@
+{
+    "transaction_id": "9159554713669",
+    "rut": "179159554",
+    "email": "ktonccc@gmail.com",
+    "amount": 1000,
+    "selected_ids": [
+        "999"
+    ],
+    "created_at": 1763063713,
+    "company_id": "76734662K",
+    "debts": [
+        {
+            "idempresa": "76734662K",
+            "idcliente": "999",
+            "mes": "11",
+            "ano": "2025",
+            "amount": 1000
+        }
+    ],
+    "xml": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Envio><IdComercio>000042</IdComercio><IdTransaccion>9159554713669</IdTransaccion><Fecha>20251113</Fecha><Hora>195513</Hora><MontoTotal>1000</MontoTotal><MediosPago>016</MediosPago><CodigoVerificacion>MEfmMZgV5AUz6KpkOFTEjAHrepheU0vtaT2kmw/f8ZzCa4dAyNGilAuCZu3Wi93e</CodigoVerificacion></Envio>",
+    "encrypted_xml": "hWg6KyTVYi89jFUo1QppzqGZiHlKoI+1cy+qLW1Xoap+fu7gNTA3LuewC/n1GXCrNG2FJjohArKxX4JSWlROpIGWreB2L3Nyj/laHXkIhsbsjyov+uVxI9hMhAv7cVhq+eOY9x1Fqw2omIacNtSng90qtNfohCDvnWg3dA6BYP8SFvWhGUn5Srda7HzELfgN8TICwVVQSHpLChBiWMvebKhxsWPGTYkSMnmn8wJczuIeitsYrXKqm6yLs6K6JWBan5pKyrXwiawC32NqTHmcTtFUKD2vX6lVAt9jakx5nE4ke9p9/NK1y9b239KEdrrQLp29GEnvQ10ebP5RlIqWChmBokrDmBOs81+ZBviu+ithWx4TjyLubNDXvx2zfGtI/4KEUp60HsqnLOIGWMuDMIZ7OoeMceo+N2nOOUau6CQpszDZUtAQ6moMmIldu6o+u+xfDmz9GuA=",
+    "endpoint": "http://20.157.19.107:8091/BPZumPago/pago.aspx",
+    "redirect_url": "http://20.157.19.107:8091/BPZumPago/pago.aspx?xml=hWg6KyTVYi89jFUo1QppzqGZiHlKoI%2B1cy%2BqLW1Xoap%2Bfu7gNTA3LuewC%2Fn1GXCrNG2FJjohArKxX4JSWlROpIGWreB2L3Nyj%2FlaHXkIhsbsjyov%2BuVxI9hMhAv7cVhq%2BeOY9x1Fqw2omIacNtSng90qtNfohCDvnWg3dA6BYP8SFvWhGUn5Srda7HzELfgN8TICwVVQSHpLChBiWMvebKhxsWPGTYkSMnmn8wJczuIeitsYrXKqm6yLs6K6JWBan5pKyrXwiawC32NqTHmcTtFUKD2vX6lVAt9jakx5nE4ke9p9%2FNK1y9b239KEdrrQLp29GEnvQ10ebP5RlIqWChmBokrDmBOs81%2BZBviu%2BithWx4TjyLubNDXvx2zfGtI%2F4KEUp60HsqnLOIGWMuDMIZ7OoeMceo%2BN2nOOUau6CQpszDZUtAQ6moMmIldu6o%2Bu%2BxfDmz9GuA%3D",
+    "transaction": {
+        "id": "9159554713669",
+        "date": "20251113",
+        "time": "195513",
+        "verification_code": "MEfmMZgV5AUz6KpkOFTEjAHrepheU0vtaT2kmw/f8ZzCa4dAyNGilAuCZu3Wi93e"
+    },
+    "zumpago": {
+        "request": {
+            "generated_at": "2025-11-13T19:55:13+00:00",
+            "endpoint": "http://20.157.19.107:8091/BPZumPago/pago.aspx",
+            "redirect_url": "http://20.157.19.107:8091/BPZumPago/pago.aspx?xml=hWg6KyTVYi89jFUo1QppzqGZiHlKoI%2B1cy%2BqLW1Xoap%2Bfu7gNTA3LuewC%2Fn1GXCrNG2FJjohArKxX4JSWlROpIGWreB2L3Nyj%2FlaHXkIhsbsjyov%2BuVxI9hMhAv7cVhq%2BeOY9x1Fqw2omIacNtSng90qtNfohCDvnWg3dA6BYP8SFvWhGUn5Srda7HzELfgN8TICwVVQSHpLChBiWMvebKhxsWPGTYkSMnmn8wJczuIeitsYrXKqm6yLs6K6JWBan5pKyrXwiawC32NqTHmcTtFUKD2vX6lVAt9jakx5nE4ke9p9%2FNK1y9b239KEdrrQLp29GEnvQ10ebP5RlIqWChmBokrDmBOs81%2BZBviu%2BithWx4TjyLubNDXvx2zfGtI%2F4KEUp60HsqnLOIGWMuDMIZ7OoeMceo%2BN2nOOUau6CQpszDZUtAQ6moMmIldu6o%2Bu%2BxfDmz9GuA%3D",
+            "xml": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Envio><IdComercio>000042</IdComercio><IdTransaccion>9159554713669</IdTransaccion><Fecha>20251113</Fecha><Hora>195513</Hora><MontoTotal>1000</MontoTotal><MediosPago>016</MediosPago><CodigoVerificacion>MEfmMZgV5AUz6KpkOFTEjAHrepheU0vtaT2kmw/f8ZzCa4dAyNGilAuCZu3Wi93e</CodigoVerificacion></Envio>",
+            "encrypted_xml": "hWg6KyTVYi89jFUo1QppzqGZiHlKoI+1cy+qLW1Xoap+fu7gNTA3LuewC/n1GXCrNG2FJjohArKxX4JSWlROpIGWreB2L3Nyj/laHXkIhsbsjyov+uVxI9hMhAv7cVhq+eOY9x1Fqw2omIacNtSng90qtNfohCDvnWg3dA6BYP8SFvWhGUn5Srda7HzELfgN8TICwVVQSHpLChBiWMvebKhxsWPGTYkSMnmn8wJczuIeitsYrXKqm6yLs6K6JWBan5pKyrXwiawC32NqTHmcTtFUKD2vX6lVAt9jakx5nE4ke9p9/NK1y9b239KEdrrQLp29GEnvQ10ebP5RlIqWChmBokrDmBOs81+ZBviu+ithWx4TjyLubNDXvx2zfGtI/4KEUp60HsqnLOIGWMuDMIZ7OoeMceo+N2nOOUau6CQpszDZUtAQ6moMmIldu6o+u+xfDmz9GuA="
+        },
+        "responses": [
+            {
+                "received_at": 1763063802,
+                "context": "response",
+                "status": "success",
+                "code": "000",
+                "description": "Transaccion Aprobada",
+                "amount": 1000,
+                "processed_at": "20251113165642",
+                "raw": {
+                    "encrypted_xml": "hWg6KyTVYi89jFUo1QppzqGZiHlKoI+1cy+qLW1Xoap+fu7gNTA3Llq00C8eDJbGxo1Jna7dNuYUe6J5Nyq6jpOmZjJtvaY0qLkEPi2ycYVRXbaeP+3uX0Z5pXZkAolJSuJrDXlOS5uEdigMEG5mj0ZxL4RExBsZEqwxHMAUia1EAOv8kKVIzamY07wEzOPgBCac3P/smHHLLH9jXuXl/0bY6d92U1M/jaiKduHJh3tPzTovhOJpOFIk5PAkzKSX4YdTLHcMs+m24DDbM0UDQn/uCCc8YQtlE7LEt0e8iLMmBoeweFf2Y2V1V5lrMXac0d3VoONl9WOtUVT3pqZqxgrG8Nzmcr+33IB9Qb1gJ1S/KsD97TVn4LWwyQhDAjuK1aHouwHXFIuCLAYTfahU4oLoZfPTtaPY8XSsrTlAyAxAu+atxYPOdAJtG9B48ST2zeKMX+kLzyx8HMWMeZC9JKGL3MaXztWScunisy1noMTqQesPoUsE6aS2OZpBOJeNFV/rUnC7J6eHazvpBhcc1yg/faWfyDjC5XZaOBCJhwipmNO8BMzj4CKdk64bPy/S1W5rZqOeFrrfionJJVlngJw+lPNpUYyahWWGthObyiQOhUGUfLBzKFDKs1K6NROVQmKDqfVzJ031CvBYSu73LX++UzusjUn9z2KHGn2sKJxcAzBqBdOnc2pzA6c/iOZKjFbzTBjoy6S5EGwvFVxyJ8+Zt4m9+ba/Y0fbMFtEtpXX/DJMm9UkS9b239KEdrrQRm7u05hclqnCadYdZDyfnAcFqfo6+zWE",
+                    "decrypted_xml": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Respuesta><IdComercio>000042</IdComercio><IdTransaccion>9159554713669</IdTransaccion><Fecha>20251113</Fecha><Hora>195513</Hora><MontoTotal>1000</MontoTotal><MedioPagoAutorizado>016</MedioPagoAutorizado><CodigoRespuesta>000</CodigoRespuesta><DescripcionRespuesta>Transaccion Aprobada</DescripcionRespuesta><CodigoAutorizacion>May+UW</CodigoAutorizacion><FechaProcesamiento>20251113165642</FechaProcesamiento><CodigoVerificacion>MEfmMZgV5AUz6KpkOFTEjAHrepheU0vtaT2kmw/f8ZzCa4dAyNGilOr123WIuhXBbdad5WYoy4Hplc/X25rclw==</CodigoVerificacion></Respuesta>",
+                    "parsed": {
+                        "IdComercio": "000042",
+                        "IdTransaccion": "9159554713669",
+                        "Fecha": "20251113",
+                        "Hora": "195513",
+                        "MontoTotal": "1000",
+                        "MedioPagoAutorizado": "016",
+                        "CodigoRespuesta": "000",
+                        "DescripcionRespuesta": "Transaccion Aprobada",
+                        "CodigoAutorizacion": "May+UW",
+                        "FechaProcesamiento": "20251113165642",
+                        "CodigoVerificacion": "MEfmMZgV5AUz6KpkOFTEjAHrepheU0vtaT2kmw/f8ZzCa4dAyNGilOr123WIuhXBbdad5WYoy4Hplc/X25rclw=="
+                    }
+                },
+                "verification": {
+                    "raw": "MEfmMZgV5AUz6KpkOFTEjAHrepheU0vtaT2kmw/f8ZzCa4dAyNGilOr123WIuhXBbdad5WYoy4Hplc/X25rclw==",
+                    "is_valid": true,
+                    "decrypted": "00004291595547136692025111319551300000000100000020251113165642",
+                    "expected": "00004291595547136692025111319551300000000100000020251113165642"
+                },
+                "errors": [],
+                "request": {
+                    "get": {
+                        "xml": "hWg6KyTVYi89jFUo1QppzqGZiHlKoI+1cy+qLW1Xoap+fu7gNTA3Llq00C8eDJbGxo1Jna7dNuYUe6J5Nyq6jpOmZjJtvaY0qLkEPi2ycYVRXbaeP+3uX0Z5pXZkAolJSuJrDXlOS5uEdigMEG5mj0ZxL4RExBsZEqwxHMAUia1EAOv8kKVIzamY07wEzOPgBCac3P/smHHLLH9jXuXl/0bY6d92U1M/jaiKduHJh3tPzTovhOJpOFIk5PAkzKSX4YdTLHcMs+m24DDbM0UDQn/uCCc8YQtlE7LEt0e8iLMmBoeweFf2Y2V1V5lrMXac0d3VoONl9WOtUVT3pqZqxgrG8Nzmcr+33IB9Qb1gJ1S/KsD97TVn4LWwyQhDAjuK1aHouwHXFIuCLAYTfahU4oLoZfPTtaPY8XSsrTlAyAxAu+atxYPOdAJtG9B48ST2zeKMX+kLzyx8HMWMeZC9JKGL3MaXztWScunisy1noMTqQesPoUsE6aS2OZpBOJeNFV/rUnC7J6eHazvpBhcc1yg/faWfyDjC5XZaOBCJhwipmNO8BMzj4CKdk64bPy/S1W5rZqOeFrrfionJJVlngJw+lPNpUYyahWWGthObyiQOhUGUfLBzKFDKs1K6NROVQmKDqfVzJ031CvBYSu73LX++UzusjUn9z2KHGn2sKJxcAzBqBdOnc2pzA6c/iOZKjFbzTBjoy6S5EGwvFVxyJ8+Zt4m9+ba/Y0fbMFtEtpXX/DJMm9UkS9b239KEdrrQRm7u05hclqnCadYdZDyfnAcFqfo6+zWE"
+                    },
+                    "post": []
+                }
+            }
+        ]
+    },
+    "ingresar_pago": {
+        "processed": true,
+        "attempts": [],
+        "processed_at": 1763063802,
+        "responses": [
+            {
+                "payload": {
+                    "IdEmpresa": "76734662K",
+                    "IdCliente": 999,
+                    "RutCliente": "179159554",
+                    "Mail": "ktonccc@gmail.com",
+                    "Recaudador": "ZUMPAGO",
+                    "Canal": "ZUMPAGO-016",
+                    "FechaPago": "13-11-2025",
+                    "FechaContable": "13-11-2025",
+                    "Mes": 11,
+                    "Ano": 2025,
+                    "Monto": 1000,
+                    "MontoFlow": 1000
+                },
+                "envelope": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.homenet.cl\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ws:IngresarPago soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n         <IdEmpresa xsi:type=\"xsd:string\">76734662K</IdEmpresa>\n         <IdCliente xsi:type=\"xsd:int\">999</IdCliente>\n         <RutCliente xsi:type=\"xsd:string\">179159554</RutCliente>\n         <Mail xsi:type=\"xsd:string\">ktonccc@gmail.com</Mail>\n         <Recaudador xsi:type=\"xsd:string\">ZUMPAGO</Recaudador>\n         <Canal xsi:type=\"xsd:string\">ZUMPAGO-016</Canal>\n         <FechaPago xsi:type=\"xsd:string\">13-11-2025</FechaPago>\n         <FechaContable xsi:type=\"xsd:string\">13-11-2025</FechaContable>\n         <Mes xsi:type=\"xsd:int\">11</Mes>\n         <Ano xsi:type=\"xsd:int\">2025</Ano>\n         <Monto xsi:type=\"xsd:int\">1000</Monto>\n         <MontoFlow xsi:type=\"xsd:int\">1000</MontoFlow>\n      </ws:IngresarPago>\n   </soapenv:Body>\n</soapenv:Envelope>",
+                "response": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><SOAP-ENV:Envelope SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\"><SOAP-ENV:Body><ns1:IngresarPagoResponse xmlns:ns1=\"http://ws.homenet.cl\"><return xsi:type=\"xsd:string\">3</return></ns1:IngresarPagoResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>",
+                "http_status": 200,
+                "wsdl": "http://ws.homenet.cl/Test_HN_2025.php?wsdl"
+            }
+        ]
+    }
+}

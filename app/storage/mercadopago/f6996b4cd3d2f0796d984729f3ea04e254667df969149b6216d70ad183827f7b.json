@@ -1,0 +1,31 @@
+{
+    "transaction_id": "mp-95063d912868a374dd45",
+    "rut": "133510516",
+    "email": "eduardo.vargas.b@gmail.com",
+    "amount": 15000,
+    "selected_ids": [
+        "234"
+    ],
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "234",
+            "mes": "11",
+            "ano": "2025",
+            "amount": 15000
+        }
+    ],
+    "created_at": 1762971727,
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    },
+    "mercadopago": {
+        "responses": []
+    },
+    "preference": {
+        "id": "2977231622-caf7937b-8546-4781-90a5-a180a229d960",
+        "init_point": "https://www.mercadopago.cl/checkout/v1/redirect?pref_id=2977231622-caf7937b-8546-4781-90a5-a180a229d960",
+        "sandbox_init_point": "https://sandbox.mercadopago.cl/checkout/v1/redirect?pref_id=2977231622-caf7937b-8546-4781-90a5-a180a229d960"
+    }
+}

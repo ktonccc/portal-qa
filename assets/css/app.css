@@ -1,0 +1,674 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overscroll-behavior-x: none;
+    touch-action: pan-y;
+}
+
+.hnet {
+    background-color: #f5f7fb;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    padding: clamp(1.5rem, 3vw, 3rem) clamp(1rem, 4vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    overflow-x: hidden;
+    overscroll-behavior-x: contain;
+}
+
+footer {
+    background-color: #fff;
+    border-top: 1px solid #e5e7eb;
+}
+
+.card-debt {
+    border: 1px solid #e0e4ec;
+}
+
+.card-debt + .card-debt {
+    margin-top: 1.5rem;
+}
+
+.badge-debt {
+    font-size: 0.95rem;
+}
+
+.table-debt td {
+    vertical-align: middle;
+}
+
+.debt-table-wrapper {
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.08);
+    padding: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+.debt-table {
+    margin-bottom: 0;
+}
+
+.debt-table__cell {
+    position: relative;
+}
+
+.alert-icon {
+    font-size: 2.5rem;
+}
+
+.webpay-form {
+    display: inline-block;
+}
+
+.site-header {
+    background-color: #202125;
+    padding: 0.75rem 0;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.site-header-inner {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0 clamp(1rem, 5vw, 2rem);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+}
+
+.site-logo-link {
+    display: flex;
+    align-items: center;
+}
+
+.site-header .site-logo {
+    width: 150px;
+}
+
+.site-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.site-nav .nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #e1e2e6;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.site-nav .nav-link:hover,
+.site-nav .nav-link:focus {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.site-nav .nav-link.active {
+    background-color: #3b3d45;
+}
+
+.landing-hero {
+    width: min(100%, 640px);
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    align-items: center;
+    margin: 0 auto;
+}
+
+.landing-heading {
+    text-align: center;
+    color: #0d3dbb;
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+}
+
+.landing-heading h1 {
+    margin: 0;
+    font-size: clamp(2.25rem, 2vw + 1.75rem, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+}
+
+.landing-subtitle {
+    margin: 0.75rem 0 0;
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2f3136;
+}
+
+.landing-form-card {
+    background-color: #f7f8fc;
+    border: 2px solid #0d3dbb;
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: clamp(1.1rem, 2.5vw, 1.75rem);
+    width: min(100%, 420px);
+    max-width: 420px;
+    min-width: 0;
+    padding: clamp(1.5rem, 3vw, 2.4rem);
+    overflow: hidden;
+}
+
+.landing-form-card .alert {
+    text-align: left;
+}
+
+.landing-form-card--response {
+    width: min(100%, 640px);
+    max-width: 640px;
+    padding: clamp(2rem, 4vw, 3rem) clamp(2.25rem, 5vw, 3.5rem);
+    align-items: center;
+    gap: clamp(1.2rem, 2.5vw, 2rem);
+    text-align: center;
+}
+
+.landing-form-card--wide {
+    width: 100%;
+    max-width: 100%;
+    align-items: stretch;
+    text-align: left;
+    gap: clamp(1.5rem, 2.5vw, 2.25rem);
+    padding: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 6vw, 4rem);
+}
+
+.landing-form-card--wide hr {
+    width: 100%;
+    margin: clamp(1.5rem, 3vw, 2rem) 0;
+}
+
+.zumpago-wide-card {
+    background-color: #f7f8fc;
+    border: 2px solid #0d3dbb;
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.12);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: clamp(1.5rem, 2.5vw, 2.25rem);
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: clamp(2rem, 4vw, 3.5rem) clamp(2rem, 6vw, 4rem);
+    text-align: left;
+}
+
+.zumpago-wide-card hr {
+    width: 100%;
+    margin: clamp(1.5rem, 3vw, 2rem) 0;
+}
+
+.zumpago-details {
+    width: 100%;
+    max-width: 100%;
+    margin: clamp(2rem, 5vw, 3rem) auto 0;
+    padding: 0 clamp(1rem, 4vw, 4rem);
+    align-self: stretch;
+}
+
+.zumpago-details .zumpago-detail-row {
+    row-gap: 1.5rem;
+    width: 100%;
+}
+
+.zumpago-details .zumpago-detail-row .detail-label {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6c6f7f;
+}
+
+.zumpago-details .zumpago-detail-row .detail-value {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #202125;
+}
+
+.zumpago-details-table {
+    width: 100%;
+}
+
+.debt-summary-heading {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.debt-email-instruction {
+    margin: clamp(1rem, 2.5vw, 1.5rem) 0 0.5rem;
+    font-weight: 600;
+}
+
+.payment-platforms {
+    width: 100%;
+    margin: clamp(1.5rem, 3vw, 2.5rem) 0 0;
+    border: 3px solid #202125;
+    border-radius: 18px;
+    background-color: #ffffff;
+    padding: clamp(1.5rem, 3vw, 2rem);
+}
+
+.payment-platforms-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-platforms-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    flex: 1 1 auto;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.payment-platforms-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.payment-platforms-logo {
+    max-height: clamp(32px, 6vw, 52px);
+    width: auto;
+    max-width: 160px;
+    transition: transform 0.2s ease;
+}
+
+.payment-platforms:not(.is-enabled) .payment-platforms-logo {
+    filter: grayscale(100%);
+    opacity: 0.55;
+}
+
+.payment-platforms.is-enabled .payment-platforms-logo {
+    filter: none;
+    opacity: 1;
+}
+
+.payment-platforms-button {
+    background: none;
+    border: none;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.payment-platforms-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.payment-platforms-button:not(:disabled):hover .payment-platforms-logo,
+.payment-platforms-button:not(:disabled):focus .payment-platforms-logo {
+    transform: scale(1.05);
+}
+
+.payment-platforms:not(.is-enabled) .payment-platforms-button {
+    pointer-events: none;
+}
+
+.payment-platforms-button .payment-platforms-logo {
+    pointer-events: none;
+}
+
+.payment-platforms-logo[data-fixed-grayscale="true"] {
+    filter: grayscale(100%) !important;
+    opacity: 0.45 !important;
+}
+
+.payment-platforms-item--unavailable .payment-platforms-button {
+    pointer-events: none;
+}
+
+.payment-platforms-item--unavailable .payment-platforms-logo {
+    filter: grayscale(100%) !important;
+    opacity: 0.35 !important;
+}
+
+.rut-form {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    width: 100%;
+}
+
+.rut-form-top {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.rut-label {
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #2f3136;
+    text-transform: uppercase;
+}
+
+.rut-field {
+    border-radius: 14px;
+    border: 1px solid #c7cddc;
+    padding: clamp(0.8rem, 2.2vw, 1.1rem) clamp(0.9rem, 2.5vw, 1.2rem);
+    font-size: clamp(1rem, 2.5vw, 1.125rem);
+    text-transform: uppercase;
+    text-align: center;
+    background-color: #ffffff;
+    box-shadow: inset 0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.rut-field:focus {
+    border-color: #0d3dbb;
+    box-shadow: 0 0 0 0.2rem rgba(13, 61, 187, 0.2);
+}
+
+.rut-feedback {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.rut-field.is-valid {
+    border-color: #28a745;
+}
+
+.rut-form-divider {
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #0d3dbb 0%, #0d3dbb 60%, #0f7f5c 100%);
+}
+
+.rut-form-bottom {
+    display: flex;
+    justify-content: center;
+}
+
+.rut-submit {
+    width: min(100%, 260px);
+    padding: clamp(0.8rem, 2.4vw, 1rem) clamp(2.2rem, 5vw, 3rem);
+    font-size: clamp(1rem, 2.4vw, 1.08rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 999px;
+}
+
+.btn-primary {
+    background-color: #0d3dbb;
+    border-color: #0d3dbb;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #0b34a0;
+    border-color: #0b34a0;
+}
+
+.mp-checkout-card {
+    width: 100%;
+    max-width: 1100px;
+}
+
+.mp-checkout-header {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.mp-checkout-content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: clamp(1rem, 3vw, 2rem);
+}
+
+.mp-checkout-column {
+    flex: 1 1 320px;
+    min-width: 280px;
+}
+
+.mp-summary-card,
+.mp-form-wrapper {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+}
+
+.mp-summary-card table {
+    font-size: 0.9rem;
+}
+
+.mp-form-wrapper .form-control {
+    background-color: #f9fafc;
+    border-radius: 12px;
+    border-color: #d8dce5;
+}
+
+.mp-validation-messages p {
+    margin-bottom: 0.4rem;
+}
+
+.mp-result {
+    border-radius: 16px;
+}
+
+@media (max-width: 767.98px) {
+    .mp-checkout-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .mp-checkout-column {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .site-nav {
+        display: none !important;
+    }
+
+    .landing-heading h1 {
+        font-size: clamp(2rem, 7vw, 2.75rem);
+    }
+
+    .landing-subtitle {
+        text-align: center;
+        letter-spacing: 0.06em;
+    }
+
+    .rut-form-bottom {
+        justify-content: center;
+    }
+
+    .rut-submit {
+        width: 100%;
+    }
+
+    .payment-platforms {
+        padding: clamp(1.25rem, 5vw, 1.75rem);
+    }
+
+    .payment-platforms-list {
+        flex-direction: column;
+        align-items: center;
+        gap: clamp(1rem, 4vw, 1.5rem);
+    }
+
+    .payment-platforms-item {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .payment-platforms-button {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .payment-platforms-logo {
+        max-width: 100%;
+    }
+
+    .debt-table-wrapper {
+        padding: 0;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .debt-table {
+        background: transparent;
+    }
+
+    .debt-table thead {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    .debt-table tbody tr {
+        display: flex;
+        flex-direction: column;
+        gap: 0.35rem;
+        background-color: #ffffff;
+        border: 1px solid #e0e4ec;
+        border-radius: 18px;
+        padding: 0.95rem 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .debt-table__cell {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: 0.35rem 0;
+        border-top: none !important;
+    }
+
+    .debt-table__cell[data-label]::before {
+        content: attr(data-label);
+        font-size: 0.72rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #6c6f7f;
+        font-weight: 600;
+        margin-right: 1rem;
+        flex: 0 0 auto;
+    }
+
+    .debt-table__cell:first-child {
+        justify-content: flex-start;
+        padding-bottom: 0.25rem;
+    }
+
+    .debt-table__cell:first-child::before {
+        display: none;
+    }
+
+    .debt-table__cell[data-label="Monto"] {
+        font-weight: 700;
+        font-size: 1.05rem;
+        color: #0d3dbb;
+    }
+
+    .debt-table__cell input[type="checkbox"] {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .debt-summary-heading,
+    .debt-email-instruction {
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) {
+    .payment-platforms-button {
+        align-self: center;
+    }
+}
+
+.main-content .card,
+.main-content .card-debt,
+.main-content .alert {
+    width: 100%;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+@media (max-width: 575.98px) {
+    .landing-form-card {
+        border-radius: 18px;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.15);
+        width: min(100%, 340px);
+        max-width: 340px;
+    }
+
+    .rut-form-divider {
+        height: 4px;
+    }
+
+    .landing-heading h1 {
+        font-size: clamp(1.75rem, 8vw, 2.3rem);
+    }
+}

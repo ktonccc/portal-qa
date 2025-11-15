@@ -1,0 +1,31 @@
+{
+    "transaction_id": "mp-f9c6e94f5974ea3237d1",
+    "rut": "168154410",
+    "email": "ktonccc@gmail.com",
+    "amount": 20000,
+    "selected_ids": [
+        "7"
+    ],
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "7",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 20000
+        }
+    ],
+    "created_at": 1762822218,
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    },
+    "mercadopago": {
+        "responses": []
+    },
+    "preference": {
+        "id": "2980326481-8474e136-4259-46d7-a7ca-f3da3d81e639",
+        "init_point": "https://www.mercadopago.cl/checkout/v1/redirect?pref_id=2980326481-8474e136-4259-46d7-a7ca-f3da3d81e639",
+        "sandbox_init_point": "https://sandbox.mercadopago.cl/checkout/v1/redirect?pref_id=2980326481-8474e136-4259-46d7-a7ca-f3da3d81e639"
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "token": "11313cb10eec07cda412b123315b1610143952707852dcbb29c41e1cf522f52c",
+    "buy_order": "234-1762971670",
+    "session_id": "",
+    "created_at": 1762971671,
+    "rut": "133510516",
+    "email": "eduardo.vargas.b@gmail.com",
+    "amount": 15000,
+    "selected_ids": [
+        "234"
+    ],
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "234",
+            "mes": "11",
+            "ano": "2025",
+            "amount": 15000
+        }
+    ],
+    "webpay": {
+        "request": {
+            "generated_at": "2025-11-12T18:21:11+00:00",
+            "url": "https://webpay3g.transbank.cl:443/webpayserver/initTransaction",
+            "token": "11313cb10eec07cda412b123315b1610143952707852dcbb29c41e1cf522f52c"
+        },
+        "responses": []
+    },
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    }
+}

@@ -1,0 +1,40 @@
+{
+    "token": "79114F97BEF5D6B4C6142222ADFD072387DF161Z",
+    "flow_order": 4522832,
+    "commerce_order": "HN-26-1763045677",
+    "rut": "127441618",
+    "email": "wherreraosorio@gmail.com",
+    "amount": 1000,
+    "selected_ids": [
+        "26"
+    ],
+    "created_at": 1763045678,
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "26",
+            "mes": "11",
+            "ano": "2025",
+            "amount": 1000
+        }
+    ],
+    "optional_payload": {
+        "rut": "12.744.161-8",
+        "email": "wherreraosorio@gmail.com",
+        "canal": "FLOW",
+        "total": 1000,
+        "idcliente": "26",
+        "idempresa": "764430824",
+        "cliente": "WILSON ALEX HERRERA AVENDAÑO",
+        "servicio": "INTERNET FTTH 600Mbps",
+        "mes": "11",
+        "ano": "2025",
+        "monto": 1000
+    },
+    "optional_encoded": "{\"rut\":\"12.744.161-8\",\"canal\":\"FLOW\",\"total\":1000,\"idcliente\":\"26\",\"idempresa\":\"764430824\",\"mes\":\"11\",\"ano\":\"2025\",\"monto\":1000}",
+    "optional_truncated": true,
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    }
+}

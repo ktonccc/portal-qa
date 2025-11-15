@@ -1,0 +1,465 @@
+<?php
+
+declare(strict_types=1);
+
+require __DIR__ . '/app/bootstrap.php';
+
+use App\Services\DebtService;
+use App\Services\FlowPaymentService;
+use App\Services\FlowTransactionStorage;
+
+/**
+ * @param array<int, string> $selectedIds
+ * @param array<int, array<string, mixed>> $selectedDebts
+ * @return array<string, mixed>
+ */
+function buildFlowOptionalPayload(
+    string $normalizedRut,
+    array $selectedIds,
+    array $selectedDebts,
+    int $selectedCount,
+    int $totalAmount,
+    string $email
+): array {
+    $normalizedIds = [];
+    foreach ($selectedIds as $value) {
+        $value = trim((string) $value);
+        if ($value !== '') {
+            $normalizedIds[] = $value;
+        }
+    }
+
+    $payload = [
+        'rut' => format_rut($normalizedRut),
+        'email' => $email,
+        'canal' => 'FLOW',
+        'total' => $totalAmount,
+    ];
+
+    if (!empty($normalizedIds)) {
+        $payload['idcliente'] = $selectedCount === 1
+            ? $normalizedIds[0]
+            : implode(',', $normalizedIds);
+    }
+
+    $primaryDebt = $selectedDebts[0] ?? null;
+    if (is_array($primaryDebt)) {
+        $idEmpresa = trim((string) ($primaryDebt['idempresa'] ?? ''));
+        if ($idEmpresa !== '') {
+            $payload['idempresa'] = $idEmpresa;
+        }
+
+        $customerName = trim((string) ($primaryDebt['nombre'] ?? ''));
+        if ($customerName !== '') {
+            $payload['cliente'] = mb_substr($customerName, 0, 80);
+        }
+
+        $service = trim((string) ($primaryDebt['servicio'] ?? $primaryDebt['mes'] ?? ''));
+        if ($service !== '') {
+            if ($selectedCount > 1) {
+                $services = [];
+                foreach ($selectedDebts as $debt) {
+                    if (!is_array($debt)) {
+                        continue;
+                    }
+                    $label = trim((string) ($debt['servicio'] ?? $debt['mes'] ?? ''));
+                    if ($label !== '') {
+                        $services[] = $label;
+                    }
+                }
+                $services = array_values(array_unique($services));
+                $service = implode(', ', array_slice($services, 0, 3));
+                if (count($services) > 3) {
+                    $service .= sprintf(' (+%d)', count($services) - 3);
+                }
+            }
+            $payload['servicio'] = mb_substr($service, 0, 80);
+        }
+
+        if ($selectedCount === 1) {
+            $month = trim((string) ($primaryDebt['mes'] ?? ''));
+            if ($month !== '') {
+                $payload['mes'] = $month;
+            }
+
+            $year = trim((string) ($primaryDebt['ano'] ?? $primaryDebt['año'] ?? ''));
+            if ($year !== '') {
+                $payload['ano'] = $year;
+            }
+
+            $amountValue = (int) ($primaryDebt['amount'] ?? 0);
+            if ($amountValue > 0) {
+                $payload['monto'] = $amountValue;
+            }
+        }
+    }
+
+    return $payload;
+}
+
+/**
+ * @return array{0: ?string, 1: bool}
+ */
+function encodeFlowOptionalPayload(array $payload): array
+{
+    $limit = 250; // Flow rechaza optional > 256 bytes; dejamos margen considerando urlencode().
+    $wasTruncated = false;
+
+    $encode = static function (array $data) {
+        return json_encode($data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    };
+
+    $encodedLength = static function (?string $value): int {
+        if ($value === null) {
+            return PHP_INT_MAX;
+        }
+        return strlen(urlencode($value));
+    };
+
+    $current = $payload;
+    $encoded = $encode($current);
+
+    if ($encoded === false) {
+        return [null, true];
+    }
+
+    if ($encodedLength($encoded) <= $limit) {
+        return [$encoded, false];
+    }
+
+    $removalPriority = [
+        ['servicio'],
+        ['cliente'],
+        ['email'],
+        ['canal'],
+        ['total'],
+    ];
+
+    foreach ($removalPriority as $keys) {
+        foreach ($keys as $key) {
+            if (array_key_exists($key, $current)) {
+                unset($current[$key]);
+                $wasTruncated = true;
+            }
+        }
+
+        $encoded = $encode($current);
+        if ($encoded !== false && $encodedLength($encoded) <= $limit) {
+            return [$encoded, $wasTruncated];
+        }
+    }
+
+    $minimalKeys = ['rut', 'idcliente', 'idempresa', 'mes', 'ano', 'monto'];
+    $reduced = [];
+    foreach ($minimalKeys as $key) {
+        if (array_key_exists($key, $payload)) {
+            $reduced[$key] = $payload[$key];
+        }
+    }
+
+    $encoded = $encode($reduced);
+    if ($encoded !== false && $encodedLength($encoded) <= $limit) {
+        return [$encoded, true];
+    }
+
+    return [null, true];
+}
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: index.php');
+    exit;
+}
+
+$rutInput = trim((string) ($_POST['rut'] ?? ''));
+$idClienteInput = $_POST['idcliente'] ?? [];
+$email = trim((string) ($_POST['email'] ?? ''));
+
+// Normalizamos la selección: `idcliente[]` puede venir como arreglo o string.
+$selectedIds = [];
+if (is_array($idClienteInput)) {
+    foreach ($idClienteInput as $value) {
+        $value = trim((string) $value);
+        if ($value !== '') {
+            $selectedIds[] = $value;
+        }
+    }
+} elseif (is_string($idClienteInput) || is_numeric($idClienteInput)) {
+    $value = trim((string) $idClienteInput);
+    if ($value !== '') {
+        $selectedIds[] = $value;
+    }
+}
+
+$selectedIds = array_values(array_unique($selectedIds));
+
+$errors = [];
+$normalizedRut = normalize_rut($rutInput);
+
+if ($normalizedRut === '') {
+    $errors[] = 'El RUT recibido no es válido.';
+}
+
+if (empty($selectedIds)) {
+    $errors[] = 'Debe seleccionar al menos una deuda para pagar.';
+}
+
+if ($email === '' || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+    $errors[] = 'Debe ingresar un correo electrónico válido.';
+}
+
+$availableDebts = [];
+if ($normalizedRut !== '' && empty($errors)) {
+    $snapshot = get_debt_snapshot($normalizedRut);
+    if ($snapshot !== null) {
+        $availableDebts = $snapshot;
+    } else {
+        try {
+            $service = new DebtService(
+                (string) config_value('services.debt_wsdl'),
+                (string) config_value('services.debt_wsdl_fallback')
+            );
+            $availableDebts = $service->fetchDebts($normalizedRut);
+            store_debt_snapshot($normalizedRut, $availableDebts);
+        } catch (Throwable $exception) {
+            $errors[] = 'No fue posible validar la deuda asociada al cliente.';
+        }
+    }
+}
+
+$selectedDebts = [];
+if (empty($errors)) {
+    foreach ($selectedIds as $idCliente) {
+        $found = null;
+        foreach ($availableDebts as $debt) {
+            if ((string) $debt['idcliente'] === $idCliente) {
+                $found = $debt;
+                break;
+            }
+        }
+
+        if ($found === null) {
+            $errors[] = 'No se encontró la deuda seleccionada con ID ' . $idCliente . '. Vuelve a consultar e inténtalo nuevamente.';
+        } else {
+            $selectedDebts[] = $found;
+        }
+    }
+}
+
+$totalAmount = 0;
+$selectedCount = count($selectedDebts);
+$redirectUrl = null;
+$flowResponse = null;
+
+if (empty($errors)) {
+    foreach ($selectedDebts as $debt) {
+        $amount = (int) ($debt['amount'] ?? 0);
+        if ($amount <= 0) {
+            continue;
+        }
+        $totalAmount += $amount;
+    }
+
+    if ($totalAmount <= 0) {
+        $errors[] = 'El monto total de las deudas seleccionadas no es válido.';
+    } else {
+        try {
+            $flowConfig = (array) config_value('flow', []);
+            $flowService = new FlowPaymentService($flowConfig);
+
+            $commerceOrder = substr(
+                'HN-' . implode('-', $selectedIds) . '-' . time(),
+                0,
+                40
+            );
+
+            $flowSubject = 'Pago de servicios HomeNet';
+            if ($selectedCount > 1) {
+                $flowSubject = sprintf('Pago de %d servicios HomeNet', $selectedCount);
+            }
+            $optionalPayload = buildFlowOptionalPayload(
+                $normalizedRut,
+                $selectedIds,
+                $selectedDebts,
+                $selectedCount,
+                $totalAmount,
+                $email
+            );
+
+            [$optionalEncoded, $optionalTruncated] = encodeFlowOptionalPayload($optionalPayload);
+            if ($optionalEncoded === null) {
+                $optionalPayload['__notice'] = 'Se omitió el optional para cumplir límites de Flow.';
+            }
+
+            $flowResponse = $flowService->createPayment([
+                'commerceOrder' => $commerceOrder,
+                'subject' => $flowSubject,
+                'amount' => $totalAmount,
+                'email' => $email,
+                'optional' => $optionalEncoded,
+            ]);
+
+            $baseUrl = rtrim((string) $flowResponse['url'], '?');
+            $redirectUrl = $baseUrl . '?token=' . urlencode((string) $flowResponse['token']);
+
+            $_SESSION['flow']['last_transaction'] = [
+                'rut' => $normalizedRut,
+                'idcliente' => $selectedIds,
+                'debts' => $selectedDebts,
+                'amount' => $totalAmount,
+                'email' => $email,
+                'token' => $flowResponse['token'],
+                'flow_order' => $flowResponse['flowOrder'] ?? null,
+                'commerce_order' => $commerceOrder,
+                'redirect_url' => $redirectUrl,
+                'subject' => $flowSubject,
+                'optional_payload' => $optionalPayload,
+                'optional_encoded' => $optionalEncoded,
+                'optional_truncated' => $optionalTruncated,
+                'created_at' => time(),
+            ];
+
+            $logPath = __DIR__ . '/app/logs/flow.log';
+            $logPayload = [
+                'rut' => $normalizedRut,
+                'email' => $email,
+                'amount' => $totalAmount,
+                'selected_ids' => $selectedIds,
+                'commerce_order' => $commerceOrder,
+                'flow_subject' => $flowSubject,
+                'optional_payload' => $optionalPayload,
+                'optional_truncated' => $optionalTruncated,
+                'optional_encoded_length' => $optionalEncoded !== null ? strlen($optionalEncoded) : null,
+                'optional_encoded_url_length' => $optionalEncoded !== null ? strlen(urlencode($optionalEncoded)) : null,
+                'response' => $flowResponse,
+                'redirect_url' => $redirectUrl,
+            ];
+            $logMessage = sprintf(
+                "[%s] [Flow][create] %s%s",
+                date('Y-m-d H:i:s'),
+                json_encode($logPayload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+                PHP_EOL
+            );
+
+            $logDir = dirname($logPath);
+            $canWrite = (file_exists($logPath) && is_writable($logPath))
+                || (!file_exists($logPath) && is_writable($logDir));
+
+            if ($canWrite) {
+                error_log($logMessage, 3, $logPath);
+            } else {
+                error_log($logMessage);
+            }
+
+            try {
+                $storage = new FlowTransactionStorage(__DIR__ . '/app/storage/flow');
+                $debtsForStorage = [];
+
+                foreach ($selectedDebts as $debt) {
+                    if (!is_array($debt)) {
+                        continue;
+                    }
+
+                    $debtsForStorage[] = [
+                        'idempresa' => (string) ($debt['idempresa'] ?? ''),
+                        'idcliente' => (string) ($debt['idcliente'] ?? ''),
+                        'mes' => (string) ($debt['mes'] ?? ''),
+                        'ano' => (string) ($debt['ano'] ?? ''),
+                        'amount' => (int) ($debt['amount'] ?? 0),
+                    ];
+                }
+
+                $storage->save((string) $flowResponse['token'], [
+                    'token' => (string) $flowResponse['token'],
+                    'flow_order' => $flowResponse['flowOrder'] ?? null,
+                    'commerce_order' => $commerceOrder,
+                    'rut' => $normalizedRut,
+                    'email' => $email,
+                    'amount' => $totalAmount,
+                    'selected_ids' => $selectedIds,
+                    'created_at' => time(),
+                    'debts' => $debtsForStorage,
+                    'optional_payload' => $optionalPayload,
+                    'optional_encoded' => $optionalEncoded,
+                    'optional_truncated' => $optionalTruncated,
+                ]);
+            } catch (Throwable $storageException) {
+                $storageLogPath = __DIR__ . '/app/logs/flow-error.log';
+                $storageLogEntry = [
+                    'message' => 'No fue posible almacenar la transacción Flow localmente.',
+                    'error' => $storageException->getMessage(),
+                    'token' => $flowResponse['token'] ?? null,
+                ];
+                $storageLogMessage = sprintf(
+                    "[%s] [Flow][storage-error] %s%s",
+                    date('Y-m-d H:i:s'),
+                    json_encode($storageLogEntry, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+                    PHP_EOL
+                );
+                $storageLogDir = dirname($storageLogPath);
+                $storageCanWrite = (file_exists($storageLogPath) && is_writable($storageLogPath))
+                    || (!file_exists($storageLogPath) && is_writable($storageLogDir));
+
+                if ($storageCanWrite) {
+                    error_log($storageLogMessage, 3, $storageLogPath);
+                } else {
+                    error_log($storageLogMessage);
+                }
+            }
+        } catch (Throwable $exception) {
+            $errors[] = 'No fue posible iniciar el pago con Flow.';
+
+            $logPath = __DIR__ . '/app/logs/flow-error.log';
+            $logMessage = sprintf(
+                "[%s] [Flow][error] %s%s",
+                date('Y-m-d H:i:s'),
+                $exception->getMessage(),
+                PHP_EOL
+            );
+            $logDir = dirname($logPath);
+            $canWrite = (file_exists($logPath) && is_writable($logPath))
+                || (!file_exists($logPath) && is_writable($logDir));
+
+            if ($canWrite) {
+                error_log($logMessage, 3, $logPath);
+            } else {
+                error_log($logMessage);
+            }
+        }
+    }
+}
+
+$pageTitle = 'Redirigiendo a Flow';
+$bodyClass = 'hnet';
+
+view('layout/header', compact('pageTitle', 'bodyClass'));
+?>
+    <?php if (!empty($errors)): ?>
+        <div class="alert alert-danger" role="alert">
+            <p class="mb-2">No se pudo iniciar el pago con Flow.</p>
+            <ul class="mb-0">
+                <?php foreach ($errors as $error): ?>
+                    <li><?= h($error); ?></li>
+                <?php endforeach; ?>
+            </ul>
+            <a href="index.php" class="btn btn-outline-primary mt-3">Volver al inicio</a>
+        </div>
+    <?php elseif ($redirectUrl !== null && $flowResponse !== null): ?>
+        <div class="alert alert-info text-center" role="alert">
+            Estamos redirigiéndote a Flow para completar tu pago de
+            <strong><?= h(format_currency((int) $totalAmount)); ?></strong>
+            correspondiente a <?= h((string) $selectedCount); ?> deuda(s) seleccionada(s).
+        </div>
+        <div class="text-center">
+            <a href="<?= h($redirectUrl); ?>" class="btn btn-primary">Ir a Flow</a>
+            <p class="text-muted small mt-2">Si no eres redirigido automáticamente, haz clic en el botón.</p>
+        </div>
+        <script>
+            (function () {
+                const flowRedirectUrl = <?= json_encode($redirectUrl, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE); ?>;
+                window.addEventListener('load', function () {
+                    window.location.href = flowRedirectUrl;
+                });
+            }());
+        </script>
+    <?php endif; ?>
+<?php view('layout/footer'); ?>

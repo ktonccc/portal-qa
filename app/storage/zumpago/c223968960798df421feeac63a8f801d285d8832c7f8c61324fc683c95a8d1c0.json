@@ -1,0 +1,43 @@
+{
+    "transaction_id": "8154410609896",
+    "rut": "168154410",
+    "email": "elsalepin3092@gmail.com",
+    "amount": 11000,
+    "selected_ids": [
+        "4"
+    ],
+    "created_at": 1762776609,
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "4",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 11000
+        }
+    ],
+    "xml": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Envio><IdComercio>000039</IdComercio><IdTransaccion>8154410609896</IdTransaccion><Fecha>20251110</Fecha><Hora>121009</Hora><MontoTotal>11000</MontoTotal><MediosPago>016</MediosPago><CodigoVerificacion>01UzZgGlxmbLEB8Ups3dh59w9164+jXsKbp++1KLTFAtqMnvsaoSDD5w5WIvSe+B</CodigoVerificacion></Envio>",
+    "encrypted_xml": "hWg6KyTVYi89jFUo1QppzqGZiHlKoI+1cy+qLW1Xoap+fu7gNTA3LuewC/n1GXCrNG2FJjohArKxX4JSWlROpGsF7lMVmF5ij/laHXkIhsbsjyov+uVxI9hMhAv7cVhqh/9kjAo2ZH/AwQDr/qHKWd0qtNfohCDvnWg3dA6BYP8SFvWhGUn5SgV52oAfZmvy8TICwVVQSHrjkUDeGroVi6hxsWPGTYkSMnmn8wJczuKwyDLYIeNeZs4vSdSANVbgr37krJRiEtHbiLvodktwbLcHyKQqQz7O24i76HZLcGw8T/I6AsH4C4j1WYmOokhHeXk3WZ6AqIbFnr6pww5sepOpGY2YFb2VNYLfajjU9TRPzbNJkVsmdKCP7JRuyJ2oABZ7q8Gh58qI0CVk4TCHRIoYbiorECYgLcWVnUH886K/oSATFS2/sBIXfFnF8KOVQKgrm86FImw=",
+    "endpoint": "http://20.157.19.107:8091/BPZumPago/pago.aspx",
+    "redirect_url": "http://20.157.19.107:8091/BPZumPago/pago.aspx?xml=hWg6KyTVYi89jFUo1QppzqGZiHlKoI%2B1cy%2BqLW1Xoap%2Bfu7gNTA3LuewC%2Fn1GXCrNG2FJjohArKxX4JSWlROpGsF7lMVmF5ij%2FlaHXkIhsbsjyov%2BuVxI9hMhAv7cVhqh%2F9kjAo2ZH%2FAwQDr%2FqHKWd0qtNfohCDvnWg3dA6BYP8SFvWhGUn5SgV52oAfZmvy8TICwVVQSHrjkUDeGroVi6hxsWPGTYkSMnmn8wJczuKwyDLYIeNeZs4vSdSANVbgr37krJRiEtHbiLvodktwbLcHyKQqQz7O24i76HZLcGw8T%2FI6AsH4C4j1WYmOokhHeXk3WZ6AqIbFnr6pww5sepOpGY2YFb2VNYLfajjU9TRPzbNJkVsmdKCP7JRuyJ2oABZ7q8Gh58qI0CVk4TCHRIoYbiorECYgLcWVnUH886K%2FoSATFS2%2FsBIXfFnF8KOVQKgrm86FImw%3D",
+    "transaction": {
+        "id": "8154410609896",
+        "date": "20251110",
+        "time": "121009",
+        "verification_code": "01UzZgGlxmbLEB8Ups3dh59w9164+jXsKbp++1KLTFAtqMnvsaoSDD5w5WIvSe+B"
+    },
+    "zumpago": {
+        "request": {
+            "generated_at": "2025-11-10T12:10:09+00:00",
+            "endpoint": "http://20.157.19.107:8091/BPZumPago/pago.aspx",
+            "redirect_url": "http://20.157.19.107:8091/BPZumPago/pago.aspx?xml=hWg6KyTVYi89jFUo1QppzqGZiHlKoI%2B1cy%2BqLW1Xoap%2Bfu7gNTA3LuewC%2Fn1GXCrNG2FJjohArKxX4JSWlROpGsF7lMVmF5ij%2FlaHXkIhsbsjyov%2BuVxI9hMhAv7cVhqh%2F9kjAo2ZH%2FAwQDr%2FqHKWd0qtNfohCDvnWg3dA6BYP8SFvWhGUn5SgV52oAfZmvy8TICwVVQSHrjkUDeGroVi6hxsWPGTYkSMnmn8wJczuKwyDLYIeNeZs4vSdSANVbgr37krJRiEtHbiLvodktwbLcHyKQqQz7O24i76HZLcGw8T%2FI6AsH4C4j1WYmOokhHeXk3WZ6AqIbFnr6pww5sepOpGY2YFb2VNYLfajjU9TRPzbNJkVsmdKCP7JRuyJ2oABZ7q8Gh58qI0CVk4TCHRIoYbiorECYgLcWVnUH886K%2FoSATFS2%2FsBIXfFnF8KOVQKgrm86FImw%3D",
+            "xml": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Envio><IdComercio>000039</IdComercio><IdTransaccion>8154410609896</IdTransaccion><Fecha>20251110</Fecha><Hora>121009</Hora><MontoTotal>11000</MontoTotal><MediosPago>016</MediosPago><CodigoVerificacion>01UzZgGlxmbLEB8Ups3dh59w9164+jXsKbp++1KLTFAtqMnvsaoSDD5w5WIvSe+B</CodigoVerificacion></Envio>",
+            "encrypted_xml": "hWg6KyTVYi89jFUo1QppzqGZiHlKoI+1cy+qLW1Xoap+fu7gNTA3LuewC/n1GXCrNG2FJjohArKxX4JSWlROpGsF7lMVmF5ij/laHXkIhsbsjyov+uVxI9hMhAv7cVhqh/9kjAo2ZH/AwQDr/qHKWd0qtNfohCDvnWg3dA6BYP8SFvWhGUn5SgV52oAfZmvy8TICwVVQSHrjkUDeGroVi6hxsWPGTYkSMnmn8wJczuKwyDLYIeNeZs4vSdSANVbgr37krJRiEtHbiLvodktwbLcHyKQqQz7O24i76HZLcGw8T/I6AsH4C4j1WYmOokhHeXk3WZ6AqIbFnr6pww5sepOpGY2YFb2VNYLfajjU9TRPzbNJkVsmdKCP7JRuyJ2oABZ7q8Gh58qI0CVk4TCHRIoYbiorECYgLcWVnUH886K/oSATFS2/sBIXfFnF8KOVQKgrm86FImw="
+        },
+        "responses": []
+    },
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    }
+}

@@ -1,0 +1,224 @@
+[2025-10-23 20:34:00] Consulta de deudas para RUT: 168154410
+[2025-10-23 20:34:26] Consulta de deudas para RUT: 168154410
+[2025-10-24 14:54:45] Consulta de deudas para RUT: 168154410
+[2025-10-24 14:55:37] Consulta de deudas para RUT: 168154410
+[2025-10-24 14:58:03] Consulta de deudas para RUT: 168154410
+[2025-10-24 14:58:49] Consulta de deudas para RUT: 168154410
+[2025-10-24 15:09:36] Consulta de deudas para RUT: 168154410
+[2025-10-28 00:38:58] Consulta de deudas para RUT: 168154410
+[debug] manual test
+[debug] from php
+[debug] inline test
+[debug] inline test
+[2025-11-06 21:26:40] Consulta de deudas para RUT: 168154410
+[debug] pay.php received POST {"rut":"168154410","idcliente":["4"],"email":"ktonccc@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=168154410","remote_addr":"200.126.36.2"}}
+[debug] pay.php received POST {"rut":"","idcliente":[],"email":"","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/pay.php","remote_addr":"200.126.36.2"}}
+[debug] {"timestamp":"2025-11-06T21:26:45+00:00","context":"pay.php-initial-validation","post":{"rut":"","normalized":"","idcliente":[],"email":""},"session_has_debts":false}
+[2025-11-06 21:28:43] Consulta de deudas para RUT: 168154410
+[debug] pay.php received POST {"rut":"168154410","idcliente":["4"],"email":"ktonccc@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=168154410","remote_addr":"200.126.36.2"}}
+[debug] pay.php received POST {"rut":"","idcliente":[],"email":"","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/pay.php","remote_addr":"200.126.36.2"}}
+[debug] {"timestamp":"2025-11-06T21:28:48+00:00","context":"pay.php-initial-validation","post":{"rut":"","normalized":"","idcliente":[],"email":""},"session_has_debts":false}
+[2025-11-06 21:31:38] Consulta de deudas para RUT: 168154410
+[debug] pay.php received POST {"rut":"168154410","idcliente":["4"],"email":"ktonccc@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=168154410","remote_addr":"200.126.36.2"}}
+[2025-11-06 21:40:08] Consulta de deudas para RUT: 168154410
+[debug] pay.php received POST {"rut":"168154410","idcliente":["4"],"email":"ktonccc@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=168154410","remote_addr":"200.126.36.2"}}
+[2025-11-07 17:53:05] Consulta de deudas para RUT: 168154410
+[debug] pay.php received POST {"rut":"168154410","idcliente":["7"],"email":"ktonccc@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=168154410","remote_addr":"200.126.36.2"}}
+[2025-11-07 21:14:50] Consulta de deudas para RUT: 166349583
+[2025-11-07 21:55:36] Consulta de deudas para RUT: 168154410
+[2025-11-07 22:10:05] Consulta de deudas para RUT: 168154410
+[2025-11-07 22:11:18] Consulta de deudas para RUT: 168154410
+[2025-11-07 22:14:15] Consulta de deudas para RUT: 166349583
+[2025-11-07 23:31:46] Consulta de deudas para RUT: 168154410
+[2025-11-07 23:37:27] Consulta de deudas para RUT: 168154410
+[2025-11-07 23:45:18] Consulta de deudas para RUT: 166349583
+[2025-11-07 23:57:30] Consulta de deudas para RUT: 168154410
+[2025-11-08 00:16:23] Consulta de deudas para RUT: 166349583
+[2025-11-08 00:33:08] Consulta de deudas para RUT: 166349583
+[2025-11-08 00:40:18] Consulta de deudas para RUT: 166349583
+[2025-11-08 00:41:10] Consulta de deudas para RUT: 166349583
+[2025-11-08 00:41:56] Consulta de deudas para RUT: 166349583
+[2025-11-08 16:34:15] Consulta de deudas para RUT: 168154410
+[2025-11-08 16:36:04] Consulta de deudas para RUT: 168154410
+[2025-11-08 23:25:30] Consulta de deudas para RUT: 79103853
+[2025-11-08 23:26:27] Consulta de deudas para RUT: 79103853
+[2025-11-08 23:30:08] Consulta de deudas para RUT: 79103853
+[2025-11-08 23:35:05] Consulta de deudas para RUT: 79103853
+[2025-11-08 23:41:54] Consulta de deudas para RUT: 79103853
+[2025-11-10 12:06:42] Consulta de deudas para RUT: 168154410
+[2025-11-10 12:08:53] Consulta de deudas para RUT: 168154410
+[2025-11-10 12:20:58] Consulta de deudas para RUT: 168154410
+[2025-11-10 14:43:34] Consulta de deudas para RUT: 123259874
+[debug] pay.php received POST {"rut":"123259874","idcliente":["13"],"email":"asevelec@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=123259874","remote_addr":"181.114.232.2"}}
+[2025-11-10 15:22:30] Consulta de deudas para RUT: 168154410
+[2025-11-10 15:27:30] Consulta de deudas para RUT: 168154410
+[2025-11-10 15:44:33] Consulta de deudas para RUT: 168154410
+[2025-11-10 15:54:37] Consulta de deudas para RUT: 168154410
+[2025-11-10 16:02:57] Consulta de deudas para RUT: 168154410
+[2025-11-10 16:09:44] Consulta de deudas para RUT: 168154410
+[2025-11-10 16:14:17] Consulta de deudas para RUT: 168154410
+[2025-11-10 16:23:39] Consulta de deudas para RUT: 168154410
+[2025-11-10 18:09:04] Consulta de deudas para RUT: 127441618
+[2025-11-10 18:10:07] Consulta de deudas para RUT: 127441618
+[2025-11-10 18:10:39] Consulta de deudas para RUT: 127441618
+[2025-11-10 18:11:16] Consulta de deudas para RUT: 127441618
+[2025-11-10 18:11:42] Consulta de deudas para RUT: 127441618
+[2025-11-10 18:12:21] Consulta de deudas para RUT: 168154410
+[debug] pay.php received POST {"rut":"168154410","idcliente":["4"],"email":"wherreraosorio@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=168154410","remote_addr":"45.65.240.3"}}
+[2025-11-10 18:18:09] Consulta de deudas para RUT: 127441618
+[2025-11-10 18:25:17] Consulta de deudas para RUT: 168154410
+[2025-11-10 18:28:33] Consulta de deudas para RUT: 168154410
+[2025-11-10 18:32:48] Consulta de deudas para RUT: 168154410
+[2025-11-10 20:50:49] Consulta de deudas para RUT: 168154410
+[2025-11-10 20:51:21] Consulta de deudas para RUT: 123250974
+[2025-11-10 20:51:43] Consulta de deudas para RUT: 123250974
+[2025-11-10 20:51:46] Consulta de deudas para RUT: 123250974
+[2025-11-10 20:51:47] Consulta de deudas para RUT: 123250974
+[2025-11-10 20:52:47] Consulta de deudas para RUT: 123250974
+[2025-11-10 20:53:05] Consulta de deudas para RUT: 123250974
+[2025-11-10 20:53:17] Consulta de deudas para RUT: 123250974
+[2025-11-10 20:53:21] Consulta de deudas para RUT: 123250974
+[2025-11-10 20:53:27] Consulta de deudas para RUT: 123250974
+[2025-11-10 20:54:10] Consulta de deudas para RUT: 123250974
+[2025-11-10 20:54:12] Consulta de deudas para RUT: 123250974
+[2025-11-10 20:54:37] Consulta de deudas para RUT: 168154410
+[2025-11-10 20:54:59] Consulta de deudas para RUT: 123259874
+[2025-11-10 20:55:31] Consulta de deudas para RUT: 123259874
+[2025-11-10 20:56:06] Consulta de deudas para RUT: 127441618
+[2025-11-10 20:56:17] Consulta de deudas para RUT: 123259874
+[2025-11-10 21:00:22] Consulta de deudas para RUT: 168154410
+[2025-11-10 21:02:59] Consulta de deudas para RUT: 123259874
+[2025-11-10 21:04:15] Consulta de deudas para RUT: 123250974
+[2025-11-10 21:06:12] Consulta de deudas para RUT: 123250974
+[2025-11-10 21:06:13] Consulta de deudas para RUT: 123250974
+[2025-11-10 21:10:13] Consulta de deudas para RUT: 123250974
+[2025-11-10 21:10:17] Consulta de deudas para RUT: 123250974
+[2025-11-10 21:10:25] Consulta de deudas para RUT: 123250974
+[2025-11-10 21:10:35] Consulta de deudas para RUT: 123250974
+[2025-11-10 21:11:41] Consulta de deudas para RUT: 168154410
+[2025-11-10 21:12:25] Consulta de deudas para RUT: 123250974
+[2025-11-10 21:12:36] Consulta de deudas para RUT: 168154410
+[2025-11-10 21:13:18] Consulta de deudas para RUT: 168154410
+[2025-11-10 21:20:05] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-10 21:23:46] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:24:17] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:24:33] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:24:46] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:25:14] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-10 21:25:38] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-10 21:26:02] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:27:11] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:27:41] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-10 21:27:55] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:38:29] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-10 21:38:55] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-10 21:39:57] Consulta de deudas para RUT (redirect): 142193175
+[2025-11-10 21:40:09] Consulta de deudas para RUT (redirect): 142193175
+[2025-11-10 21:42:36] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:42:43] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:45:58] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:47:05] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:47:54] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 21:48:28] Consulta de deudas para RUT (redirect): 123259874
+[2025-11-10 22:22:24] Consulta de deudas para RUT (redirect): 142193175
+[2025-11-10 22:32:17] Consulta de deudas para RUT (redirect): 142193175
+[2025-11-10 22:32:23] Consulta de deudas para RUT (redirect): 142193175
+[2025-11-10 22:32:42] Consulta de deudas para RUT (redirect): 142193175
+[2025-11-10 22:35:40] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-10 22:36:59] Consulta de deudas para RUT (redirect): 142193175
+[2025-11-10 22:37:07] Consulta de deudas para RUT (redirect): 142193175
+[2025-11-10 22:42:47] Consulta de deudas para RUT (redirect): 142193175
+[2025-11-10 22:46:13] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-10 22:47:30] Consulta de deudas para RUT (redirect): 142193175
+[2025-11-10 22:48:08] Consulta de deudas para RUT (redirect): 142193175
+[2025-11-10 23:44:59] Consulta de deudas para RUT (redirect): 140273589
+[2025-11-10 23:48:19] Consulta de deudas para RUT (redirect): 140273589
+[2025-11-11 00:02:01] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 00:05:47] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 00:06:39] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 00:07:20] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 00:08:33] Consulta de deudas para RUT (redirect): 140273589
+[2025-11-11 00:09:34] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 00:09:48] Consulta de deudas para RUT (redirect): 166349583
+[2025-11-11 00:09:53] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 00:15:45] Consulta de deudas para RUT (redirect): 140273589
+[2025-11-11 00:16:45] Consulta de deudas para RUT (redirect): 140273589
+[2025-11-11 00:19:38] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 00:20:03] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 00:50:14] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 00:51:58] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 01:11:53] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 01:20:53] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 01:22:58] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 01:28:19] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 01:32:38] Consulta de deudas para RUT (redirect): 166349583
+[2025-11-11 01:47:23] Consulta de deudas para RUT (redirect): 166349583
+[2025-11-11 01:49:30] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 01:59:31] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 02:06:04] Consulta de deudas para RUT (redirect): 166349583
+[2025-11-11 02:16:49] Consulta de deudas para RUT (redirect): 127441618
+[2025-11-11 02:35:57] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 02:36:31] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 02:36:47] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 02:37:05] Consulta de deudas para RUT (redirect): 168154410
+[debug] pay.php received POST {"rut":"168154410","idcliente":["7"],"email":"ktonccc@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=168154410","remote_addr":"200.126.36.2"}}
+[2025-11-11 21:07:58] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 21:11:14] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-11 23:33:17] Consulta de deudas para RUT (redirect): 140273589
+[2025-11-12 12:16:54] Consulta de deudas para RUT (redirect): 140273589
+[2025-11-12 12:16:55] Consulta de deudas para RUT (redirect): 140273589
+[2025-11-12 18:20:53] Consulta de deudas para RUT (redirect): 133510516
+[debug] pay.php received POST {"rut":"133510516","idcliente":["234"],"email":"eduardo.vargas.b@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=133510516","remote_addr":"190.211.167.169"}}
+[2025-11-12 18:21:54] Consulta de deudas para RUT (redirect): 133510516
+[2025-11-12 18:23:39] Consulta de deudas para RUT (redirect): 133510516
+[2025-11-12 18:24:23] Consulta de deudas para RUT (redirect): 133510516
+[2025-11-12 18:24:36] Consulta de deudas para RUT (redirect): 133510516
+[2025-11-12 18:24:40] Consulta de deudas para RUT (redirect): 133510516
+[2025-11-12 18:24:46] Consulta de deudas para RUT (redirect): 133510516
+[2025-11-12 18:24:50] Consulta de deudas para RUT (redirect): 133510516
+[2025-11-12 18:24:56] Consulta de deudas para RUT (redirect): 133510516
+[2025-11-12 18:25:06] Consulta de deudas para RUT (redirect): 133510516
+[2025-11-12 18:25:24] Consulta de deudas para RUT (redirect): 133510516
+[debug] pay.php received POST {"rut":"133510516","idcliente":["234","235"],"email":"eduardo.vargas.b@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=133510516","remote_addr":"190.211.167.169"}}
+[debug] pay.php received POST {"rut":"133510516","idcliente":["234","235"],"email":"eduardo.vargas.b@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=133510516","remote_addr":"190.211.167.169"}}
+[2025-11-12 20:24:18] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-12 20:39:34] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-12 20:42:14] Consulta de deudas para RUT (redirect): 179159554
+[2025-11-12 20:44:34] Consulta de deudas para RUT (redirect): 156526924
+[2025-11-12 20:47:39] Consulta de deudas para RUT (redirect): 156526924
+[2025-11-12 20:53:59] Consulta de deudas para RUT (redirect): 156526924
+[2025-11-12 20:58:20] Consulta de deudas para RUT (redirect): 156526924
+[2025-11-12 20:59:48] Consulta de deudas para RUT (redirect): 156526924
+[2025-11-12 21:06:42] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-12 21:07:30] Consulta de deudas para RUT (redirect): 179159554
+[2025-11-13 00:36:43] Consulta de deudas para RUT (redirect): 133510516
+[debug] pay.php received POST {"rut":"133510516","idcliente":["234"],"email":"eduardo.vargas.b@gmail.com","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=133510516","remote_addr":"190.211.167.169"}}
+[2025-11-13 14:53:55] Consulta de deudas para RUT (redirect): 127441618
+[2025-11-13 19:54:49] Consulta de deudas para RUT (redirect): 179159554
+[2025-11-13 19:57:04] Consulta de deudas para RUT (redirect): 179159554
+[2025-11-13 20:07:55] Consulta de deudas para RUT (redirect): 156526924
+[2025-11-13 20:09:19] Consulta de deudas para RUT (redirect): 156526924
+[2025-11-13 20:10:13] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-14 13:16:01] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-14 13:18:31] Consulta de deudas para RUT (redirect): 140273589
+[2025-11-14 13:32:07] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-14 13:57:07] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-14 13:58:48] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-14 14:16:30] Consulta de deudas para RUT (redirect): 179159554
+[2025-11-14 14:45:59] Consulta de deudas para RUT (redirect): 168154410
+[2025-11-14 15:48:05] Consulta de deudas para RUT (redirect): 142826437
+[2025-11-14 15:50:12] Consulta de deudas para RUT (redirect): 142826437
+[2025-11-14 20:24:36] Consulta de deudas para RUT (redirect): 136080415
+[debug] pay.php received POST {"rut":"136080415","idcliente":["2025"],"email":"gerencia@fullnetchile.cl","server":{"request_uri":"/pay.php","referer":"https://pagos2.homenet.cl/debts.php?rut=136080415","remote_addr":"45.165.40.3"}}
+[2025-11-14 20:33:34] Consulta de deudas para RUT (redirect): 136080415
+[2025-11-14 20:37:39] Consulta de deudas para RUT (redirect): 136080415
+[2025-11-14 22:35:23] Consulta de deudas para RUT (redirect): 136080415
+[2025-11-14 22:35:53] Consulta de deudas para RUT (redirect): 136080415
+[2025-11-14 22:52:07] Consulta de deudas para RUT (redirect): 762198444
+[2025-11-14 22:52:51] Consulta de deudas para RUT (redirect): 762198444
+[2025-11-14 23:30:29] Consulta de deudas para RUT (redirect): 762198444
+[2025-11-14 23:34:14] Consulta de deudas para RUT (redirect): 143289478
+[2025-11-14 23:37:00] Consulta de deudas para RUT (redirect): 143289478
+[2025-11-14 23:44:11] Consulta de deudas para RUT (redirect): 143289478
+[2025-11-14 23:50:07] Consulta de deudas para RUT (redirect): 143289478
+[2025-11-15 13:22:30] Consulta de deudas para RUT (redirect): 143289478

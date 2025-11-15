@@ -1,0 +1,385 @@
+{
+    "transaction_id": "mp-c7b8c4fbb1fc5134a3c7",
+    "rut": "166349583",
+    "email": "wlatorre@wmnet.cl",
+    "amount": 1000,
+    "selected_ids": [
+        "56"
+    ],
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "56",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 1000
+        }
+    ],
+    "created_at": 1762826774,
+    "ingresar_pago": {
+        "processed": true,
+        "attempts": [],
+        "processed_at": 1762826787,
+        "responses": [
+            {
+                "payload": {
+                    "IdEmpresa": "764430824",
+                    "IdCliente": 56,
+                    "RutCliente": "166349583",
+                    "Mail": "wlatorre@wmnet.cl",
+                    "Recaudador": "MercadoPago",
+                    "Canal": "MPAGO",
+                    "FechaPago": "11-11-2025",
+                    "FechaContable": "11-11-2025",
+                    "Mes": 5,
+                    "Ano": 2025,
+                    "Monto": 1000,
+                    "MontoFlow": 962
+                },
+                "envelope": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<soapenv:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:ws=\"http://ws.homenet.cl\">\n   <soapenv:Header/>\n   <soapenv:Body>\n      <ws:IngresarPago soapenv:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n         <IdEmpresa xsi:type=\"xsd:string\">764430824</IdEmpresa>\n         <IdCliente xsi:type=\"xsd:int\">56</IdCliente>\n         <RutCliente xsi:type=\"xsd:string\">166349583</RutCliente>\n         <Mail xsi:type=\"xsd:string\">wlatorre@wmnet.cl</Mail>\n         <Recaudador xsi:type=\"xsd:string\">MercadoPago</Recaudador>\n         <Canal xsi:type=\"xsd:string\">MPAGO</Canal>\n         <FechaPago xsi:type=\"xsd:string\">11-11-2025</FechaPago>\n         <FechaContable xsi:type=\"xsd:string\">11-11-2025</FechaContable>\n         <Mes xsi:type=\"xsd:int\">5</Mes>\n         <Ano xsi:type=\"xsd:int\">2025</Ano>\n         <Monto xsi:type=\"xsd:int\">1000</Monto>\n         <MontoFlow xsi:type=\"xsd:int\">962</MontoFlow>\n      </ws:IngresarPago>\n   </soapenv:Body>\n</soapenv:Envelope>",
+                "response": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><SOAP-ENV:Envelope SOAP-ENV:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:SOAP-ENV=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:SOAP-ENC=\"http://schemas.xmlsoap.org/soap/encoding/\"><SOAP-ENV:Body><ns1:IngresarPagoResponse xmlns:ns1=\"http://ws.homenet.cl\"><return xsi:type=\"xsd:string\">1</return></ns1:IngresarPagoResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>",
+                "http_status": 200,
+                "wsdl": "http://ws.homenet.cl/Test_HN_2025.php?wsdl"
+            }
+        ]
+    },
+    "mercadopago": {
+        "responses": [
+            {
+                "timestamp": 1762826787,
+                "source": "webhook",
+                "response": {
+                    "accounts_info": null,
+                    "additional_info": {
+                        "items": [
+                            {
+                                "description": "Contrato 56",
+                                "id": "56",
+                                "quantity": "1",
+                                "title": "INTERNET AIR 20 MEGA",
+                                "unit_price": "1000.0"
+                            }
+                        ],
+                        "payer": {
+                            "first_name": "JUANA DEL CARMEN LLANQUINAO HUEHUENTRO"
+                        },
+                        "tracking_id": "platform:v1-whitelabel,so:ALL,type:N/A,security:none"
+                    },
+                    "authorization_code": null,
+                    "binary_mode": true,
+                    "brand_id": null,
+                    "build_version": "3.130.1-hotfix-12",
+                    "call_for_authorize_id": null,
+                    "captured": true,
+                    "card": [],
+                    "charges_details": [
+                        {
+                            "accounts": {
+                                "from": "collector",
+                                "to": "mp"
+                            },
+                            "amounts": {
+                                "original": 38,
+                                "refunded": 0
+                            },
+                            "client_id": 0,
+                            "date_created": "2025-11-10T22:06:25.000-04:00",
+                            "id": "132744691883-001",
+                            "last_updated": "2025-11-10T22:06:25.000-04:00",
+                            "metadata": {
+                                "reason": "",
+                                "source": "rule-engine",
+                                "source_detail": "processing_fee_charge"
+                            },
+                            "name": "mercadopago_fee",
+                            "refund_charges": [],
+                            "reserve_id": null,
+                            "type": "fee"
+                        }
+                    ],
+                    "charges_execution_info": {
+                        "internal_execution": {
+                            "date": "2025-11-10T22:06:25.593-04:00",
+                            "execution_id": "01K9RAM4RV35JR4Y3TXRS6Z90J"
+                        }
+                    },
+                    "collector_id": 2977231622,
+                    "corporation_id": null,
+                    "counter_currency": null,
+                    "coupon_amount": 0,
+                    "currency_id": "CLP",
+                    "date_approved": "2025-11-10T22:06:25.000-04:00",
+                    "date_created": "2025-11-10T22:06:25.000-04:00",
+                    "date_last_updated": "2025-11-10T22:06:25.000-04:00",
+                    "date_of_expiration": null,
+                    "deduction_schema": null,
+                    "description": "INTERNET AIR 20 MEGA",
+                    "differential_pricing_id": null,
+                    "external_reference": "mp-c7b8c4fbb1fc5134a3c7",
+                    "fee_details": [
+                        {
+                            "amount": 38,
+                            "fee_payer": "collector",
+                            "type": "mercadopago_fee"
+                        }
+                    ],
+                    "financing_group": null,
+                    "id": 132744691883,
+                    "installments": 1,
+                    "integrator_id": null,
+                    "issuer_id": "2020",
+                    "live_mode": true,
+                    "marketplace_owner": null,
+                    "merchant_account_id": null,
+                    "merchant_number": null,
+                    "metadata": {
+                        "rut": "166349583",
+                        "transaction_id": "mp-c7b8c4fbb1fc5134a3c7",
+                        "selected_ids": [
+                            "56"
+                        ]
+                    },
+                    "money_release_date": "2025-11-10T22:06:25.000-04:00",
+                    "money_release_schema": null,
+                    "money_release_status": "released",
+                    "notification_url": "https://pagos2.homenet.cl/mercadopago_process.php",
+                    "operation_type": "regular_payment",
+                    "order": {
+                        "id": "35455271555",
+                        "type": "mercadopago"
+                    },
+                    "payer": {
+                        "email": "walterf.latorre@gmail.com",
+                        "entity_type": null,
+                        "first_name": null,
+                        "id": "69382029",
+                        "identification": {
+                            "number": "143289478",
+                            "type": "RUT"
+                        },
+                        "last_name": null,
+                        "operator_id": null,
+                        "phone": {
+                            "number": null,
+                            "extension": null,
+                            "area_code": null
+                        },
+                        "type": null
+                    },
+                    "payment_method": {
+                        "id": "account_money",
+                        "issuer_id": "2020",
+                        "type": "account_money"
+                    },
+                    "payment_method_id": "account_money",
+                    "payment_type_id": "account_money",
+                    "platform_id": null,
+                    "point_of_interaction": {
+                        "business_info": {
+                            "branch": "PX",
+                            "sub_unit": "checkout_pro",
+                            "unit": "online_payments"
+                        },
+                        "transaction_data": [],
+                        "type": "UNSPECIFIED"
+                    },
+                    "pos_id": null,
+                    "processing_mode": "aggregator",
+                    "refunds": [],
+                    "release_info": null,
+                    "shipping_amount": 0,
+                    "sponsor_id": null,
+                    "statement_descriptor": null,
+                    "status": "approved",
+                    "status_detail": "accredited",
+                    "store_id": null,
+                    "tags": null,
+                    "taxes_amount": 0,
+                    "transaction_amount": 1000,
+                    "transaction_amount_refunded": 0,
+                    "transaction_details": {
+                        "acquirer_reference": null,
+                        "external_resource_url": null,
+                        "financial_institution": null,
+                        "installment_amount": 0,
+                        "net_received_amount": 962,
+                        "overpaid_amount": 0,
+                        "payable_deferral_period": null,
+                        "payment_method_reference_id": null,
+                        "total_paid_amount": 1000
+                    }
+                }
+            },
+            {
+                "timestamp": 1762826787,
+                "source": "webhook",
+                "response": {
+                    "accounts_info": null,
+                    "additional_info": {
+                        "items": [
+                            {
+                                "description": "Contrato 56",
+                                "id": "56",
+                                "quantity": "1",
+                                "title": "INTERNET AIR 20 MEGA",
+                                "unit_price": "1000.0"
+                            }
+                        ],
+                        "payer": {
+                            "first_name": "JUANA DEL CARMEN LLANQUINAO HUEHUENTRO"
+                        },
+                        "tracking_id": "platform:v1-whitelabel,so:ALL,type:N/A,security:none"
+                    },
+                    "authorization_code": null,
+                    "binary_mode": true,
+                    "brand_id": null,
+                    "build_version": "3.130.1-hotfix-12",
+                    "call_for_authorize_id": null,
+                    "captured": true,
+                    "card": [],
+                    "charges_details": [
+                        {
+                            "accounts": {
+                                "from": "collector",
+                                "to": "mp"
+                            },
+                            "amounts": {
+                                "original": 38,
+                                "refunded": 0
+                            },
+                            "client_id": 0,
+                            "date_created": "2025-11-10T22:06:25.000-04:00",
+                            "id": "132744691883-001",
+                            "last_updated": "2025-11-10T22:06:25.000-04:00",
+                            "metadata": {
+                                "reason": "",
+                                "source": "rule-engine",
+                                "source_detail": "processing_fee_charge"
+                            },
+                            "name": "mercadopago_fee",
+                            "refund_charges": [],
+                            "reserve_id": null,
+                            "type": "fee"
+                        }
+                    ],
+                    "charges_execution_info": {
+                        "internal_execution": {
+                            "date": "2025-11-10T22:06:25.593-04:00",
+                            "execution_id": "01K9RAM4RV35JR4Y3TXRS6Z90J"
+                        }
+                    },
+                    "collector_id": 2977231622,
+                    "corporation_id": null,
+                    "counter_currency": null,
+                    "coupon_amount": 0,
+                    "currency_id": "CLP",
+                    "date_approved": "2025-11-10T22:06:25.000-04:00",
+                    "date_created": "2025-11-10T22:06:25.000-04:00",
+                    "date_last_updated": "2025-11-10T22:06:25.000-04:00",
+                    "date_of_expiration": null,
+                    "deduction_schema": null,
+                    "description": "INTERNET AIR 20 MEGA",
+                    "differential_pricing_id": null,
+                    "external_reference": "mp-c7b8c4fbb1fc5134a3c7",
+                    "fee_details": [
+                        {
+                            "amount": 38,
+                            "fee_payer": "collector",
+                            "type": "mercadopago_fee"
+                        }
+                    ],
+                    "financing_group": null,
+                    "id": 132744691883,
+                    "installments": 1,
+                    "integrator_id": null,
+                    "issuer_id": "2020",
+                    "live_mode": true,
+                    "marketplace_owner": null,
+                    "merchant_account_id": null,
+                    "merchant_number": null,
+                    "metadata": {
+                        "rut": "166349583",
+                        "transaction_id": "mp-c7b8c4fbb1fc5134a3c7",
+                        "selected_ids": [
+                            "56"
+                        ]
+                    },
+                    "money_release_date": "2025-11-10T22:06:25.000-04:00",
+                    "money_release_schema": null,
+                    "money_release_status": "released",
+                    "notification_url": "https://pagos2.homenet.cl/mercadopago_process.php",
+                    "operation_type": "regular_payment",
+                    "order": {
+                        "id": "35455271555",
+                        "type": "mercadopago"
+                    },
+                    "payer": {
+                        "email": "walterf.latorre@gmail.com",
+                        "entity_type": null,
+                        "first_name": null,
+                        "id": "69382029",
+                        "identification": {
+                            "number": "143289478",
+                            "type": "RUT"
+                        },
+                        "last_name": null,
+                        "operator_id": null,
+                        "phone": {
+                            "number": null,
+                            "extension": null,
+                            "area_code": null
+                        },
+                        "type": null
+                    },
+                    "payment_method": {
+                        "id": "account_money",
+                        "issuer_id": "2020",
+                        "type": "account_money"
+                    },
+                    "payment_method_id": "account_money",
+                    "payment_type_id": "account_money",
+                    "platform_id": null,
+                    "point_of_interaction": {
+                        "business_info": {
+                            "branch": "PX",
+                            "sub_unit": "checkout_pro",
+                            "unit": "online_payments"
+                        },
+                        "transaction_data": [],
+                        "type": "UNSPECIFIED"
+                    },
+                    "pos_id": null,
+                    "processing_mode": "aggregator",
+                    "refunds": [],
+                    "release_info": null,
+                    "shipping_amount": 0,
+                    "sponsor_id": null,
+                    "statement_descriptor": null,
+                    "status": "approved",
+                    "status_detail": "accredited",
+                    "store_id": null,
+                    "tags": null,
+                    "taxes_amount": 0,
+                    "transaction_amount": 1000,
+                    "transaction_amount_refunded": 0,
+                    "transaction_details": {
+                        "acquirer_reference": null,
+                        "external_resource_url": null,
+                        "financial_institution": null,
+                        "installment_amount": 0,
+                        "net_received_amount": 962,
+                        "overpaid_amount": 0,
+                        "payable_deferral_period": null,
+                        "payment_method_reference_id": null,
+                        "total_paid_amount": 1000
+                    }
+                }
+            }
+        ]
+    },
+    "preference": {
+        "id": "2977231622-3a861e70-af97-4078-bac9-ced9fe5ac6e0",
+        "init_point": "https://www.mercadopago.cl/checkout/v1/redirect?pref_id=2977231622-3a861e70-af97-4078-bac9-ced9fe5ac6e0",
+        "sandbox_init_point": "https://sandbox.mercadopago.cl/checkout/v1/redirect?pref_id=2977231622-3a861e70-af97-4078-bac9-ced9fe5ac6e0"
+    }
+}

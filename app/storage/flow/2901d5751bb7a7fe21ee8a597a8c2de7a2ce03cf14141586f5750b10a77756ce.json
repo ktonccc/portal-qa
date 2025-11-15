@@ -1,0 +1,40 @@
+{
+    "token": "589A5B98009DDCF6F824FCD8F9C372809192193P",
+    "flow_order": 4440663,
+    "commerce_order": "HN-4-1762439755",
+    "rut": "168154410",
+    "email": "ktonccc@gmail.com",
+    "amount": 1000,
+    "selected_ids": [
+        "4"
+    ],
+    "created_at": 1762439756,
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "4",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 1000
+        }
+    ],
+    "optional_payload": {
+        "rut": "16.815.441-0",
+        "email": "ktonccc@gmail.com",
+        "canal": "FLOW",
+        "total": 1000,
+        "idcliente": "4",
+        "idempresa": "764430824",
+        "cliente": "NICOLAS ALBERTO JARA HORLACHER",
+        "servicio": "INTERNET FTTH 300Mbps",
+        "mes": "5",
+        "ano": "2025",
+        "monto": 1000
+    },
+    "optional_encoded": "{\"rut\":\"16.815.441-0\",\"email\":\"ktonccc@gmail.com\",\"canal\":\"FLOW\",\"total\":1000,\"idcliente\":\"4\",\"idempresa\":\"764430824\",\"cliente\":\"NICOLAS ALBERTO JARA HORLACHER\",\"servicio\":\"INTERNET FTTH 300Mbps\",\"mes\":\"5\",\"ano\":\"2025\",\"monto\":1000}",
+    "optional_truncated": false,
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    }
+}

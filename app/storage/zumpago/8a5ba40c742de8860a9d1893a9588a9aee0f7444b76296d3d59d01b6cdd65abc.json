@@ -1,0 +1,43 @@
+{
+    "transaction_id": "3259874945198",
+    "rut": "123259874",
+    "email": "asevelec@gmail.com",
+    "amount": 18900,
+    "selected_ids": [
+        "13"
+    ],
+    "created_at": 1762785945,
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "13",
+            "mes": "11",
+            "ano": "2025",
+            "amount": 18900
+        }
+    ],
+    "xml": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Envio><IdComercio>000039</IdComercio><IdTransaccion>3259874945198</IdTransaccion><Fecha>20251110</Fecha><Hora>144545</Hora><MontoTotal>18900</MontoTotal><MediosPago>016</MediosPago><CodigoVerificacion>MgWqsRtW7f/JJ/6Z6yICzUBkPlE/xGg/ZVRZhTC3Usszs2px9BOD2q1kVXYCRoyU</CodigoVerificacion></Envio>",
+    "encrypted_xml": "hWg6KyTVYi89jFUo1QppzqGZiHlKoI+1cy+qLW1Xoap+fu7gNTA3LuewC/n1GXCrNG2FJjohArKxX4JSWlROpGsF7lMVmF5ij/laHXkIhsbsjyov+uVxI9hMhAv7cVhqISkMf5fe61TOm3thEJ57fd0qtNfohCDvnWg3dA6BYP8SFvWhGUn5SgV52oAfZmvy8TICwVVQSHpH1E+8niJ+x6hxsWPGTYkSMnmn8wJczuKvjP/xuy/J9c4vSdSANVbgr37krJRiEtHbiLvodktwbLcHyKQqQz7O24i76HZLcGw8T/I6AsH4C4j1WYmOokhHWYI62Ae91ne7DYz/SxuiRJ+30VclWJK9Fwi29JvJ4mqAFW91NZARsqmj/e5kpsvglLEQzShoG6qh8X3+rnGzhUIOTYyxxLubLcWVnUH886K/oSATFS2/sBIXfFnF8KOVQKgrm86FImw=",
+    "endpoint": "https://www.zumpago.cl/inicio/pagar_cuentas.aspx",
+    "redirect_url": "https://www.zumpago.cl/inicio/pagar_cuentas.aspx?xml=hWg6KyTVYi89jFUo1QppzqGZiHlKoI%2B1cy%2BqLW1Xoap%2Bfu7gNTA3LuewC%2Fn1GXCrNG2FJjohArKxX4JSWlROpGsF7lMVmF5ij%2FlaHXkIhsbsjyov%2BuVxI9hMhAv7cVhqISkMf5fe61TOm3thEJ57fd0qtNfohCDvnWg3dA6BYP8SFvWhGUn5SgV52oAfZmvy8TICwVVQSHpH1E%2B8niJ%2Bx6hxsWPGTYkSMnmn8wJczuKvjP%2Fxuy%2FJ9c4vSdSANVbgr37krJRiEtHbiLvodktwbLcHyKQqQz7O24i76HZLcGw8T%2FI6AsH4C4j1WYmOokhHWYI62Ae91ne7DYz%2FSxuiRJ%2B30VclWJK9Fwi29JvJ4mqAFW91NZARsqmj%2Fe5kpsvglLEQzShoG6qh8X3%2BrnGzhUIOTYyxxLubLcWVnUH886K%2FoSATFS2%2FsBIXfFnF8KOVQKgrm86FImw%3D",
+    "transaction": {
+        "id": "3259874945198",
+        "date": "20251110",
+        "time": "144545",
+        "verification_code": "MgWqsRtW7f/JJ/6Z6yICzUBkPlE/xGg/ZVRZhTC3Usszs2px9BOD2q1kVXYCRoyU"
+    },
+    "zumpago": {
+        "request": {
+            "generated_at": "2025-11-10T14:45:45+00:00",
+            "endpoint": "https://www.zumpago.cl/inicio/pagar_cuentas.aspx",
+            "redirect_url": "https://www.zumpago.cl/inicio/pagar_cuentas.aspx?xml=hWg6KyTVYi89jFUo1QppzqGZiHlKoI%2B1cy%2BqLW1Xoap%2Bfu7gNTA3LuewC%2Fn1GXCrNG2FJjohArKxX4JSWlROpGsF7lMVmF5ij%2FlaHXkIhsbsjyov%2BuVxI9hMhAv7cVhqISkMf5fe61TOm3thEJ57fd0qtNfohCDvnWg3dA6BYP8SFvWhGUn5SgV52oAfZmvy8TICwVVQSHpH1E%2B8niJ%2Bx6hxsWPGTYkSMnmn8wJczuKvjP%2Fxuy%2FJ9c4vSdSANVbgr37krJRiEtHbiLvodktwbLcHyKQqQz7O24i76HZLcGw8T%2FI6AsH4C4j1WYmOokhHWYI62Ae91ne7DYz%2FSxuiRJ%2B30VclWJK9Fwi29JvJ4mqAFW91NZARsqmj%2Fe5kpsvglLEQzShoG6qh8X3%2BrnGzhUIOTYyxxLubLcWVnUH886K%2FoSATFS2%2FsBIXfFnF8KOVQKgrm86FImw%3D",
+            "xml": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><Envio><IdComercio>000039</IdComercio><IdTransaccion>3259874945198</IdTransaccion><Fecha>20251110</Fecha><Hora>144545</Hora><MontoTotal>18900</MontoTotal><MediosPago>016</MediosPago><CodigoVerificacion>MgWqsRtW7f/JJ/6Z6yICzUBkPlE/xGg/ZVRZhTC3Usszs2px9BOD2q1kVXYCRoyU</CodigoVerificacion></Envio>",
+            "encrypted_xml": "hWg6KyTVYi89jFUo1QppzqGZiHlKoI+1cy+qLW1Xoap+fu7gNTA3LuewC/n1GXCrNG2FJjohArKxX4JSWlROpGsF7lMVmF5ij/laHXkIhsbsjyov+uVxI9hMhAv7cVhqISkMf5fe61TOm3thEJ57fd0qtNfohCDvnWg3dA6BYP8SFvWhGUn5SgV52oAfZmvy8TICwVVQSHpH1E+8niJ+x6hxsWPGTYkSMnmn8wJczuKvjP/xuy/J9c4vSdSANVbgr37krJRiEtHbiLvodktwbLcHyKQqQz7O24i76HZLcGw8T/I6AsH4C4j1WYmOokhHWYI62Ae91ne7DYz/SxuiRJ+30VclWJK9Fwi29JvJ4mqAFW91NZARsqmj/e5kpsvglLEQzShoG6qh8X3+rnGzhUIOTYyxxLubLcWVnUH886K/oSATFS2/sBIXfFnF8KOVQKgrm86FImw="
+        },
+        "responses": []
+    },
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    }
+}

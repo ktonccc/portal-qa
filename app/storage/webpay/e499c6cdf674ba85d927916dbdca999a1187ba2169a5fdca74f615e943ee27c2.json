@@ -1,0 +1,33 @@
+{
+    "token": "123153da2aadfc62afb7ea3030284de8282c12432850f0b1083b50fc160aab4c",
+    "buy_order": "4-1762462386",
+    "session_id": "",
+    "created_at": 1762462386,
+    "rut": "168154410",
+    "email": "ktonccc@gmail.com",
+    "amount": 1004,
+    "selected_ids": [
+        "4"
+    ],
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "4",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 1004
+        }
+    ],
+    "webpay": {
+        "request": {
+            "generated_at": "2025-11-06T20:53:06+00:00",
+            "url": "https://webpay3g.transbank.cl:443/webpayserver/initTransaction",
+            "token": "123153da2aadfc62afb7ea3030284de8282c12432850f0b1083b50fc160aab4c"
+        },
+        "responses": []
+    },
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    }
+}

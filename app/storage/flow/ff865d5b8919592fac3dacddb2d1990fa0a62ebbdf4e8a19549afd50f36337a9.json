@@ -1,0 +1,40 @@
+{
+    "token": "AFF2D2AB949F68A0C10D805F1CEED87AAC3D957A",
+    "flow_order": 4490895,
+    "commerce_order": "HN-16-1762811259",
+    "rut": "123259874",
+    "email": "ktonccc@gmail.com",
+    "amount": 1000,
+    "selected_ids": [
+        "16"
+    ],
+    "created_at": 1762811259,
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "16",
+            "mes": "5",
+            "ano": "2025",
+            "amount": 1000
+        }
+    ],
+    "optional_payload": {
+        "rut": "12.325.987-4",
+        "email": "ktonccc@gmail.com",
+        "canal": "FLOW",
+        "total": 1000,
+        "idcliente": "16",
+        "idempresa": "764430824",
+        "cliente": "SERGIO MITCHELL",
+        "servicio": "INTERNET FTTH 350Mbps + CABLE BASICO",
+        "mes": "5",
+        "ano": "2025",
+        "monto": 1000
+    },
+    "optional_encoded": "{\"rut\":\"12.325.987-4\",\"canal\":\"FLOW\",\"total\":1000,\"idcliente\":\"16\",\"idempresa\":\"764430824\",\"mes\":\"5\",\"ano\":\"2025\",\"monto\":1000}",
+    "optional_truncated": true,
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    }
+}

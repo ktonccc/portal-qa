@@ -1,0 +1,31 @@
+{
+    "transaction_id": "mp-1a3d5f3caa4414f2f510",
+    "rut": "123259874",
+    "email": "admin@mail.com",
+    "amount": 18900,
+    "selected_ids": [
+        "13"
+    ],
+    "debts": [
+        {
+            "idempresa": "764430824",
+            "idcliente": "13",
+            "mes": "11",
+            "ano": "2025",
+            "amount": 18900
+        }
+    ],
+    "created_at": 1762810032,
+    "ingresar_pago": {
+        "processed": false,
+        "attempts": []
+    },
+    "mercadopago": {
+        "responses": []
+    },
+    "preference": {
+        "id": "2977405996-78ef0f79-ad27-4dd4-9208-034efb5d294b",
+        "init_point": "https://www.mercadopago.cl/checkout/v1/redirect?pref_id=2977405996-78ef0f79-ad27-4dd4-9208-034efb5d294b",
+        "sandbox_init_point": "https://sandbox.mercadopago.cl/checkout/v1/redirect?pref_id=2977405996-78ef0f79-ad27-4dd4-9208-034efb5d294b"
+    }
+}
