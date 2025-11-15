@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/app/bootstrap.php';
 
+use App\Services\FlowConfigResolver;
 use App\Services\FlowPaymentService;
 use App\Services\FlowIngresarPagoReporter;
 use App\Services\FlowTransactionStorage;
@@ -25,10 +26,45 @@ if ($token === '') {
     return;
 }
 
+$transactionRecord = null;
+
 try {
     $flowConfig = (array) config_value('flow', []);
-    $flowService = new FlowPaymentService($flowConfig);
+    $configResolver = new FlowConfigResolver($flowConfig);
     $flowStorage = new FlowTransactionStorage(__DIR__ . '/app/storage/flow');
+    $transactionRecord = $flowStorage->get($token);
+
+    $companyId = '';
+    if (is_array($transactionRecord)) {
+        $companyId = trim((string) ($transactionRecord['company_id'] ?? ''));
+        if ($companyId !== '') {
+            $companyId = strtoupper(preg_replace('/[^0-9K]/i', '', $companyId) ?? '');
+        }
+
+        if ($companyId === '') {
+            $debts = $transactionRecord['debts'] ?? [];
+            if (is_array($debts)) {
+                foreach ($debts as $debt) {
+                    if (!is_array($debt)) {
+                        continue;
+                    }
+
+                    $candidate = trim((string) ($debt['idempresa'] ?? ''));
+                    if ($candidate === '') {
+                        continue;
+                    }
+
+                    $companyId = strtoupper(preg_replace('/[^0-9K]/i', '', $candidate) ?? '');
+                    if ($companyId !== '') {
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    $flowProfile = $configResolver->resolveByCompanyId($companyId);
+    $flowService = new FlowPaymentService($flowProfile);
     $status = $flowService->getPaymentStatus($token);
     $statusCode = (int) ($status['status'] ?? 0);
 
@@ -83,7 +119,7 @@ try {
 
             $endpointOverrides = [
                 '764430824' => $ingresarPagoWsdl, // Padre Las Casas (endpoint actual)
-                '765316085' => $villarricaWsdl,
+                '765316081' => $villarricaWsdl,
                 '76734662K' => $gorbeaWsdl,
             ];
 
@@ -122,7 +158,7 @@ try {
     }
 
     if ($statusCode === 2) {
-        $transactionRecord = $flowStorage->get($token);
+        $transactionRecord = $transactionRecord ?? $flowStorage->get($token);
         $rutToClear = is_array($transactionRecord) ? (string) ($transactionRecord['rut'] ?? '') : '';
 
         if ($rutToClear !== '') {

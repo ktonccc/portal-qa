@@ -5,6 +5,7 @@ declare(strict_types=1);
 require __DIR__ . '/app/bootstrap.php';
 
 use App\Services\IngresarPagoService;
+use App\Services\MercadoPagoConfigResolver;
 use App\Services\MercadoPagoIngresarPagoReporter;
 use App\Services\MercadoPagoPaymentService;
 use App\Services\MercadoPagoTransactionStorage;
@@ -34,9 +35,29 @@ if ($paymentId === '') {
 }
 
 $mpConfig = (array) config_value('mercadopago', []);
+$configResolver = new MercadoPagoConfigResolver($mpConfig);
+$storage = new MercadoPagoTransactionStorage(__DIR__ . '/app/storage/mercadopago');
+
+$transactionIdParam = trim((string) ($_GET['transaction_id'] ?? ''));
+$companyIdParam = trim((string) ($_GET['company_id'] ?? ''));
+$transaction = null;
+
+if ($transactionIdParam !== '') {
+    $transaction = $storage->get($transactionIdParam);
+}
+
+$companyId = $companyIdParam !== '' ? $companyIdParam : (string) ($transaction['company_id'] ?? '');
+$profileConfig = $configResolver->resolveByCompanyId($companyId);
+$accessToken = trim((string) ($profileConfig['access_token'] ?? ''));
+
+if ($accessToken === '') {
+    http_response_code(500);
+    echo json_encode(['error' => 'La empresa asociada al pago no tiene credenciales de Mercado Pago configuradas.']);
+    return;
+}
 
 try {
-    $paymentService = new MercadoPagoPaymentService($mpConfig);
+    $paymentService = new MercadoPagoPaymentService($profileConfig);
     $payment = $paymentService->getPayment($paymentId);
 } catch (Throwable $exception) {
     http_response_code(500);
@@ -51,8 +72,9 @@ if ($externalReference === '') {
     return;
 }
 
-$storage = new MercadoPagoTransactionStorage(__DIR__ . '/app/storage/mercadopago');
-$transaction = $storage->get($externalReference);
+if ($transaction === null || (string) ($transaction['transaction_id'] ?? '') !== $externalReference) {
+    $transaction = $storage->get($externalReference);
+}
 
 if (!is_array($transaction)) {
     http_response_code(404);
@@ -88,7 +110,7 @@ if ($status === 'approved') {
 
         $endpointOverrides = [
             '764430824' => $ingresarPagoWsdl,
-            '765316085' => $villarricaWsdl,
+            '765316081' => $villarricaWsdl,
             '76734662K' => $gorbeaWsdl,
         ];
 

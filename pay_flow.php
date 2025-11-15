@@ -5,6 +5,7 @@ declare(strict_types=1);
 require __DIR__ . '/app/bootstrap.php';
 
 use App\Services\DebtService;
+use App\Services\FlowConfigResolver;
 use App\Services\FlowPaymentService;
 use App\Services\FlowTransactionStorage;
 
@@ -249,6 +250,10 @@ $totalAmount = 0;
 $selectedCount = count($selectedDebts);
 $redirectUrl = null;
 $flowResponse = null;
+$selectedCompanyId = '';
+/** @var array<string, mixed> $flowConfig */
+$flowConfig = [];
+$flowConfigResolver = null;
 
 if (empty($errors)) {
     foreach ($selectedDebts as $debt) {
@@ -262,167 +267,207 @@ if (empty($errors)) {
     if ($totalAmount <= 0) {
         $errors[] = 'El monto total de las deudas seleccionadas no es válido.';
     } else {
-        try {
-            $flowConfig = (array) config_value('flow', []);
-            $flowService = new FlowPaymentService($flowConfig);
+        $flowConfig = (array) config_value('flow', []);
+        $flowConfigResolver = new FlowConfigResolver($flowConfig);
 
-            $commerceOrder = substr(
-                'HN-' . implode('-', $selectedIds) . '-' . time(),
-                0,
-                40
-            );
-
-            $flowSubject = 'Pago de servicios HomeNet';
-            if ($selectedCount > 1) {
-                $flowSubject = sprintf('Pago de %d servicios HomeNet', $selectedCount);
+        $companySet = [];
+        foreach ($selectedDebts as $debt) {
+            $rawCompanyId = (string) ($debt['idempresa'] ?? '');
+            $normalizedCompanyId = strtoupper(preg_replace('/[^0-9K]/i', '', $rawCompanyId) ?? '');
+            if ($normalizedCompanyId !== '') {
+                $companySet[$normalizedCompanyId] = true;
             }
-            $optionalPayload = buildFlowOptionalPayload(
-                $normalizedRut,
-                $selectedIds,
-                $selectedDebts,
-                $selectedCount,
-                $totalAmount,
-                $email
-            );
+        }
 
-            [$optionalEncoded, $optionalTruncated] = encodeFlowOptionalPayload($optionalPayload);
-            if ($optionalEncoded === null) {
-                $optionalPayload['__notice'] = 'Se omitió el optional para cumplir límites de Flow.';
+        $uniqueCompanies = array_keys($companySet);
+        if (count($uniqueCompanies) === 0) {
+            $errors[] = 'No fue posible determinar la empresa asociada a las deudas seleccionadas.';
+        } elseif (count($uniqueCompanies) > 1) {
+            $errors[] = 'Las deudas seleccionadas pertenecen a distintas empresas. Selecciona deudas de una sola empresa para continuar con Flow.';
+        } else {
+            $selectedCompanyId = (string) $uniqueCompanies[0];
+        }
+
+        if ($selectedCompanyId !== '' && !$flowConfigResolver->hasCompanyProfile($selectedCompanyId)) {
+            $errors[] = 'La empresa seleccionada no está habilitada para pagos a través de Flow.';
+        }
+
+        if (empty($errors)) {
+            $flowProfileConfig = $flowConfigResolver?->resolveByCompanyId($selectedCompanyId) ?? $flowConfig;
+            $profileApiKey = trim((string) ($flowProfileConfig['api_key'] ?? ''));
+            $profileSecretKey = trim((string) ($flowProfileConfig['secret_key'] ?? ''));
+
+            if ($profileApiKey === '' || $profileSecretKey === '') {
+                $errors[] = 'La empresa seleccionada no tiene credenciales de Flow configuradas para este ambiente.';
             }
+        }
 
-            $flowResponse = $flowService->createPayment([
-                'commerceOrder' => $commerceOrder,
-                'subject' => $flowSubject,
-                'amount' => $totalAmount,
-                'email' => $email,
-                'optional' => $optionalEncoded,
-            ]);
-
-            $baseUrl = rtrim((string) $flowResponse['url'], '?');
-            $redirectUrl = $baseUrl . '?token=' . urlencode((string) $flowResponse['token']);
-
-            $_SESSION['flow']['last_transaction'] = [
-                'rut' => $normalizedRut,
-                'idcliente' => $selectedIds,
-                'debts' => $selectedDebts,
-                'amount' => $totalAmount,
-                'email' => $email,
-                'token' => $flowResponse['token'],
-                'flow_order' => $flowResponse['flowOrder'] ?? null,
-                'commerce_order' => $commerceOrder,
-                'redirect_url' => $redirectUrl,
-                'subject' => $flowSubject,
-                'optional_payload' => $optionalPayload,
-                'optional_encoded' => $optionalEncoded,
-                'optional_truncated' => $optionalTruncated,
-                'created_at' => time(),
-            ];
-
-            $logPath = __DIR__ . '/app/logs/flow.log';
-            $logPayload = [
-                'rut' => $normalizedRut,
-                'email' => $email,
-                'amount' => $totalAmount,
-                'selected_ids' => $selectedIds,
-                'commerce_order' => $commerceOrder,
-                'flow_subject' => $flowSubject,
-                'optional_payload' => $optionalPayload,
-                'optional_truncated' => $optionalTruncated,
-                'optional_encoded_length' => $optionalEncoded !== null ? strlen($optionalEncoded) : null,
-                'optional_encoded_url_length' => $optionalEncoded !== null ? strlen(urlencode($optionalEncoded)) : null,
-                'response' => $flowResponse,
-                'redirect_url' => $redirectUrl,
-            ];
-            $logMessage = sprintf(
-                "[%s] [Flow][create] %s%s",
-                date('Y-m-d H:i:s'),
-                json_encode($logPayload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
-                PHP_EOL
-            );
-
-            $logDir = dirname($logPath);
-            $canWrite = (file_exists($logPath) && is_writable($logPath))
-                || (!file_exists($logPath) && is_writable($logDir));
-
-            if ($canWrite) {
-                error_log($logMessage, 3, $logPath);
-            } else {
-                error_log($logMessage);
-            }
-
+        if (empty($errors)) {
             try {
-                $storage = new FlowTransactionStorage(__DIR__ . '/app/storage/flow');
-                $debtsForStorage = [];
+                $flowProfileConfig = $flowConfigResolver?->resolveByCompanyId($selectedCompanyId) ?? $flowConfig;
+                $flowService = new FlowPaymentService($flowProfileConfig);
 
-                foreach ($selectedDebts as $debt) {
-                    if (!is_array($debt)) {
-                        continue;
-                    }
+                $commerceOrder = substr(
+                    'HN-' . implode('-', $selectedIds) . '-' . time(),
+                    0,
+                    40
+                );
 
-                    $debtsForStorage[] = [
-                        'idempresa' => (string) ($debt['idempresa'] ?? ''),
-                        'idcliente' => (string) ($debt['idcliente'] ?? ''),
-                        'mes' => (string) ($debt['mes'] ?? ''),
-                        'ano' => (string) ($debt['ano'] ?? ''),
-                        'amount' => (int) ($debt['amount'] ?? 0),
-                    ];
+                $flowSubject = 'Pago de servicios HomeNet';
+                if ($selectedCount > 1) {
+                    $flowSubject = sprintf('Pago de %d servicios HomeNet', $selectedCount);
+                }
+                $optionalPayload = buildFlowOptionalPayload(
+                    $normalizedRut,
+                    $selectedIds,
+                    $selectedDebts,
+                    $selectedCount,
+                    $totalAmount,
+                    $email
+                );
+
+                [$optionalEncoded, $optionalTruncated] = encodeFlowOptionalPayload($optionalPayload);
+                if ($optionalEncoded === null) {
+                    $optionalPayload['__notice'] = 'Se omitió el optional para cumplir límites de Flow.';
                 }
 
-                $storage->save((string) $flowResponse['token'], [
-                    'token' => (string) $flowResponse['token'],
+                $flowResponse = $flowService->createPayment([
+                    'commerceOrder' => $commerceOrder,
+                    'subject' => $flowSubject,
+                    'amount' => $totalAmount,
+                    'email' => $email,
+                    'optional' => $optionalEncoded,
+                ]);
+
+                $baseUrl = rtrim((string) $flowResponse['url'], '?');
+                $redirectUrl = $baseUrl . '?token=' . urlencode((string) $flowResponse['token']);
+
+                $_SESSION['flow']['last_transaction'] = [
+                    'rut' => $normalizedRut,
+                    'idcliente' => $selectedIds,
+                    'debts' => $selectedDebts,
+                    'amount' => $totalAmount,
+                    'email' => $email,
+                    'token' => $flowResponse['token'],
                     'flow_order' => $flowResponse['flowOrder'] ?? null,
                     'commerce_order' => $commerceOrder,
+                    'redirect_url' => $redirectUrl,
+                    'subject' => $flowSubject,
+                    'optional_payload' => $optionalPayload,
+                    'optional_encoded' => $optionalEncoded,
+                    'optional_truncated' => $optionalTruncated,
+                    'company_id' => $selectedCompanyId,
+                    'created_at' => time(),
+                ];
+
+                $logPath = __DIR__ . '/app/logs/flow.log';
+                $logPayload = [
                     'rut' => $normalizedRut,
                     'email' => $email,
                     'amount' => $totalAmount,
                     'selected_ids' => $selectedIds,
-                    'created_at' => time(),
-                    'debts' => $debtsForStorage,
+                    'commerce_order' => $commerceOrder,
+                    'flow_subject' => $flowSubject,
+                    'company_id' => $selectedCompanyId,
                     'optional_payload' => $optionalPayload,
-                    'optional_encoded' => $optionalEncoded,
                     'optional_truncated' => $optionalTruncated,
-                ]);
-            } catch (Throwable $storageException) {
-                $storageLogPath = __DIR__ . '/app/logs/flow-error.log';
-                $storageLogEntry = [
-                    'message' => 'No fue posible almacenar la transacción Flow localmente.',
-                    'error' => $storageException->getMessage(),
-                    'token' => $flowResponse['token'] ?? null,
+                    'optional_encoded_length' => $optionalEncoded !== null ? strlen($optionalEncoded) : null,
+                    'optional_encoded_url_length' => $optionalEncoded !== null ? strlen(urlencode($optionalEncoded)) : null,
+                    'response' => $flowResponse,
+                    'redirect_url' => $redirectUrl,
                 ];
-                $storageLogMessage = sprintf(
-                    "[%s] [Flow][storage-error] %s%s",
+                $logMessage = sprintf(
+                    "[%s] [Flow][create] %s%s",
                     date('Y-m-d H:i:s'),
-                    json_encode($storageLogEntry, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+                    json_encode($logPayload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
                     PHP_EOL
                 );
-                $storageLogDir = dirname($storageLogPath);
-                $storageCanWrite = (file_exists($storageLogPath) && is_writable($storageLogPath))
-                    || (!file_exists($storageLogPath) && is_writable($storageLogDir));
 
-                if ($storageCanWrite) {
-                    error_log($storageLogMessage, 3, $storageLogPath);
+                $logDir = dirname($logPath);
+                $canWrite = (file_exists($logPath) && is_writable($logPath))
+                    || (!file_exists($logPath) && is_writable($logDir));
+
+                if ($canWrite) {
+                    error_log($logMessage, 3, $logPath);
                 } else {
-                    error_log($storageLogMessage);
+                    error_log($logMessage);
                 }
-            }
-        } catch (Throwable $exception) {
-            $errors[] = 'No fue posible iniciar el pago con Flow.';
 
-            $logPath = __DIR__ . '/app/logs/flow-error.log';
-            $logMessage = sprintf(
-                "[%s] [Flow][error] %s%s",
-                date('Y-m-d H:i:s'),
-                $exception->getMessage(),
-                PHP_EOL
-            );
-            $logDir = dirname($logPath);
-            $canWrite = (file_exists($logPath) && is_writable($logPath))
-                || (!file_exists($logPath) && is_writable($logDir));
+                try {
+                    $storage = new FlowTransactionStorage(__DIR__ . '/app/storage/flow');
+                    $debtsForStorage = [];
 
-            if ($canWrite) {
-                error_log($logMessage, 3, $logPath);
-            } else {
-                error_log($logMessage);
+                    foreach ($selectedDebts as $debt) {
+                        if (!is_array($debt)) {
+                            continue;
+                        }
+
+                        $debtsForStorage[] = [
+                            'idempresa' => (string) ($debt['idempresa'] ?? ''),
+                            'idcliente' => (string) ($debt['idcliente'] ?? ''),
+                            'mes' => (string) ($debt['mes'] ?? ''),
+                            'ano' => (string) ($debt['ano'] ?? ''),
+                            'amount' => (int) ($debt['amount'] ?? 0),
+                        ];
+                    }
+
+                    $storage->save((string) $flowResponse['token'], [
+                        'token' => (string) $flowResponse['token'],
+                        'flow_order' => $flowResponse['flowOrder'] ?? null,
+                        'commerce_order' => $commerceOrder,
+                        'rut' => $normalizedRut,
+                        'email' => $email,
+                        'amount' => $totalAmount,
+                        'selected_ids' => $selectedIds,
+                        'created_at' => time(),
+                        'company_id' => $selectedCompanyId,
+                        'debts' => $debtsForStorage,
+                        'optional_payload' => $optionalPayload,
+                        'optional_encoded' => $optionalEncoded,
+                        'optional_truncated' => $optionalTruncated,
+                    ]);
+                } catch (Throwable $storageException) {
+                    $storageLogPath = __DIR__ . '/app/logs/flow-error.log';
+                    $storageLogEntry = [
+                        'message' => 'No fue posible almacenar la transacción Flow localmente.',
+                        'error' => $storageException->getMessage(),
+                        'token' => $flowResponse['token'] ?? null,
+                    ];
+                    $storageLogMessage = sprintf(
+                        "[%s] [Flow][storage-error] %s%s",
+                        date('Y-m-d H:i:s'),
+                        json_encode($storageLogEntry, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES),
+                        PHP_EOL
+                    );
+                    $storageLogDir = dirname($storageLogPath);
+                    $storageCanWrite = (file_exists($storageLogPath) && is_writable($storageLogPath))
+                        || (!file_exists($storageLogPath) && is_writable($storageLogDir));
+
+                    if ($storageCanWrite) {
+                        error_log($storageLogMessage, 3, $storageLogPath);
+                    } else {
+                        error_log($storageLogMessage);
+                    }
+                }
+            } catch (Throwable $exception) {
+                $errors[] = 'No fue posible iniciar el pago con Flow.';
+
+                $logPath = __DIR__ . '/app/logs/flow-error.log';
+                $logMessage = sprintf(
+                    "[%s] [Flow][error] %s%s",
+                    date('Y-m-d H:i:s'),
+                    $exception->getMessage(),
+                    PHP_EOL
+                );
+                $logDir = dirname($logPath);
+                $canWrite = (file_exists($logPath) && is_writable($logPath))
+                    || (!file_exists($logPath) && is_writable($logDir));
+
+                if ($canWrite) {
+                    error_log($logMessage, 3, $logPath);
+                } else {
+                    error_log($logMessage);
+                }
             }
         }
     }

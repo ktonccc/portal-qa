@@ -5,6 +5,7 @@ declare(strict_types=1);
 return [
     // Cambia este valor a 'sandbox' cuando quieras operar con las llaves de prueba.
     'environment' => 'production',
+    'default_company_id' => null,
 
     'credentials' => [
         'production' => [
@@ -26,5 +27,28 @@ return [
         'success' => 'https://pagos2.homenet.cl/mercadopago_return.php',
         'failure' => 'https://pagos2.homenet.cl/mercadopago_return.php',
         'pending' => 'https://pagos2.homenet.cl/mercadopago_return.php',
+    ],
+    'companies' => [
+        '764430824' => [
+            'label' => 'Padre Las Casas',
+        ],
+        '765316081' => [
+            'label' => 'Villarrica',
+            'credentials' => [
+                'production' => [
+                    'public_key' => '',
+                    'access_token' => '',
+                ],
+            ],
+        ],
+        '76734662K' => [
+            'label' => 'Gorbea',
+            'credentials' => [
+                'production' => [
+                    'public_key' => '',
+                    'access_token' => '',
+                ],
+            ],
+        ],
     ],
 ];

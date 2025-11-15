@@ -5,6 +5,7 @@ declare(strict_types=1);
 require __DIR__ . '/app/bootstrap.php';
 
 use App\Services\DebtService;
+use App\Services\MercadoPagoConfigResolver;
 use App\Services\MercadoPagoPaymentService;
 use App\Services\MercadoPagoTransactionStorage;
 
@@ -49,14 +50,6 @@ if ($email === '' || filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
     $errors[] = 'Debe ingresar un correo electrónico válido.';
 }
 
-$mercadoPagoConfig = (array) config_value('mercadopago', []);
-$mercadoPagoPublicKey = trim((string) ($mercadoPagoConfig['public_key'] ?? ''));
-$mercadoPagoAccessToken = trim((string) ($mercadoPagoConfig['access_token'] ?? ''));
-
-if ($mercadoPagoPublicKey === '' || $mercadoPagoAccessToken === '') {
-    $errors[] = 'Mercado Pago no se encuentra configurado. Contacta al administrador del sistema.';
-}
-
 $availableDebts = [];
 if ($normalizedRut !== '' && empty($errors)) {
     $snapshot = get_debt_snapshot($normalizedRut);
@@ -95,6 +88,11 @@ if (empty($errors)) {
     }
 }
 
+$mercadoPagoConfig = (array) config_value('mercadopago', []);
+$mercadoPagoResolver = new MercadoPagoConfigResolver($mercadoPagoConfig);
+$selectedCompanyId = '';
+$activeMercadoPagoConfig = $mercadoPagoConfig;
+
 $totalAmount = 0;
 if (empty($errors)) {
     foreach ($selectedDebts as $debt) {
@@ -107,6 +105,40 @@ if (empty($errors)) {
 
     if ($totalAmount <= 0) {
         $errors[] = 'El monto total de las deudas seleccionadas no es válido.';
+    } else {
+        $companySet = [];
+        foreach ($selectedDebts as $debt) {
+            $rawCompanyId = (string) ($debt['idempresa'] ?? '');
+            $normalizedCompanyId = strtoupper(preg_replace('/[^0-9K]/i', '', $rawCompanyId) ?? '');
+            if ($normalizedCompanyId !== '') {
+                $companySet[$normalizedCompanyId] = true;
+            }
+        }
+
+        $uniqueCompanies = array_keys($companySet);
+        if (count($uniqueCompanies) === 0) {
+            $errors[] = 'No fue posible determinar la empresa asociada a las deudas seleccionadas.';
+        } elseif (count($uniqueCompanies) > 1) {
+            $errors[] = 'Las deudas seleccionadas pertenecen a distintas empresas. Selecciona deudas de una sola empresa para continuar con Mercado Pago.';
+        } else {
+            $selectedCompanyId = (string) $uniqueCompanies[0];
+        }
+
+        if ($selectedCompanyId !== '' && !$mercadoPagoResolver->hasCompanyProfile($selectedCompanyId)) {
+            $errors[] = 'La empresa seleccionada no está habilitada para pagos a través de Mercado Pago.';
+        }
+
+        if (empty($errors)) {
+            $resolvedConfig = $mercadoPagoResolver->resolveByCompanyId($selectedCompanyId);
+            $resolvedPublicKey = trim((string) ($resolvedConfig['public_key'] ?? ''));
+            $resolvedAccessToken = trim((string) ($resolvedConfig['access_token'] ?? ''));
+
+            if ($resolvedPublicKey === '' || $resolvedAccessToken === '') {
+                $errors[] = 'La empresa seleccionada no cuenta con credenciales de Mercado Pago configuradas para este ambiente.';
+            } else {
+                $activeMercadoPagoConfig = $resolvedConfig;
+            }
+        }
     }
 }
 
@@ -153,6 +185,7 @@ if (empty($errors)) {
         'amount' => $totalAmount,
         'selected_ids' => $selectedIds,
         'debts' => $debtsForStorage,
+        'company_id' => $selectedCompanyId,
         'created_at' => time(),
     ];
 
@@ -176,7 +209,7 @@ if (empty($errors)) {
 
     if (empty($errors)) {
         try {
-            $paymentService = new MercadoPagoPaymentService($mercadoPagoConfig);
+            $paymentService = new MercadoPagoPaymentService($activeMercadoPagoConfig);
         } catch (Throwable $exception) {
             $errors[] = 'No fue posible inicializar la conexión con Mercado Pago.';
             $logPath = __DIR__ . '/app/logs/mercadopago-error.log';
@@ -232,9 +265,9 @@ if (empty($errors)) {
             ];
         }
 
-        $returnUrls = (array) ($mercadoPagoConfig['return_urls'] ?? []);
-        $autoReturn = trim((string) ($mercadoPagoConfig['auto_return'] ?? 'approved'));
-        $notificationUrl = trim((string) ($mercadoPagoConfig['notification_url'] ?? ''));
+        $returnUrls = (array) ($activeMercadoPagoConfig['return_urls'] ?? []);
+        $autoReturn = trim((string) ($activeMercadoPagoConfig['auto_return'] ?? 'approved'));
+        $notificationUrl = trim((string) ($activeMercadoPagoConfig['notification_url'] ?? ''));
 
         $preferencePayload = [
             'items' => $items,
@@ -258,7 +291,12 @@ if (empty($errors)) {
         ];
 
         if ($notificationUrl !== '') {
-            $preferencePayload['notification_url'] = $notificationUrl;
+            $notificationParams = [
+                'company_id' => $selectedCompanyId,
+                'transaction_id' => $transactionId,
+            ];
+            $separator = str_contains($notificationUrl, '?') ? '&' : '?';
+            $preferencePayload['notification_url'] = $notificationUrl . $separator . http_build_query($notificationParams);
         }
 
         try {
@@ -300,6 +338,7 @@ if (empty($errors)) {
                 'debts' => $selectedDebts,
                 'amount' => $totalAmount,
                 'email' => $email,
+                'company_id' => $selectedCompanyId,
                 'created_at' => time(),
                 'preference_id' => $preferenceResponse['id'] ?? null,
                 'redirect_url' => $preferenceRedirectUrl,
@@ -314,6 +353,7 @@ if (empty($errors)) {
                 'email' => $email,
                 'amount' => $totalAmount,
                 'selected_ids' => $selectedIds,
+                'company_id' => $selectedCompanyId,
                 'redirect_url' => $preferenceRedirectUrl,
             ];
             error_log(

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/app/bootstrap.php';
 
+use App\Services\MercadoPagoConfigResolver;
 use App\Services\MercadoPagoPaymentService;
 use App\Services\MercadoPagoTransactionStorage;
 
@@ -22,13 +23,21 @@ if ($externalReference !== '') {
 }
 
 $mpConfig = (array) config_value('mercadopago', []);
+$configResolver = new MercadoPagoConfigResolver($mpConfig);
+$companyId = is_array($transaction) ? (string) ($transaction['company_id'] ?? '') : '';
+$resolvedConfig = $configResolver->resolveByCompanyId($companyId);
+$resolvedAccessToken = trim((string) ($resolvedConfig['access_token'] ?? ''));
 
 if ($paymentId !== '') {
-    try {
-        $paymentService = new MercadoPagoPaymentService($mpConfig);
-        $paymentDetails = $paymentService->getPayment($paymentId);
-    } catch (Throwable $exception) {
-        $errors[] = 'No fue posible obtener los detalles del pago en Mercado Pago.';
+    if ($resolvedAccessToken === '') {
+        $errors[] = 'La empresa asociada a este pago no cuenta con credenciales de Mercado Pago configuradas.';
+    } else {
+        try {
+            $paymentService = new MercadoPagoPaymentService($resolvedConfig);
+            $paymentDetails = $paymentService->getPayment($paymentId);
+        } catch (Throwable $exception) {
+            $errors[] = 'No fue posible obtener los detalles del pago en Mercado Pago.';
+        }
     }
 }
 

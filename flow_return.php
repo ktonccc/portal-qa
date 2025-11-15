@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require __DIR__ . '/app/bootstrap.php';
 
+use App\Services\FlowConfigResolver;
 use App\Services\FlowPaymentService;
 use App\Services\FlowIngresarPagoReporter;
 use App\Services\FlowTransactionStorage;
@@ -17,13 +18,63 @@ $errors = [];
 $statusData = null;
 $statusCode = 0;
 $lastTransaction = $_SESSION['flow']['last_transaction'] ?? null;
+$transactionRecord = null;
 
 if ($token === '') {
     $errors[] = 'No se recibió el token de Flow para validar la transacción.';
 } else {
     try {
         $flowConfig = (array) config_value('flow', []);
-        $service = new FlowPaymentService($flowConfig);
+        $configResolver = new FlowConfigResolver($flowConfig);
+        $flowStorage = new FlowTransactionStorage(__DIR__ . '/app/storage/flow');
+
+        $normalizeCompanyId = static function (mixed $value): string {
+            $value = trim((string) $value);
+            if ($value === '') {
+                return '';
+            }
+
+            $normalized = preg_replace('/[^0-9K]/i', '', $value);
+
+            return strtoupper($normalized ?? '');
+        };
+
+        $extractCompanyId = static function (?array $transaction) use ($normalizeCompanyId): string {
+            if (!is_array($transaction)) {
+                return '';
+            }
+
+            $companyId = $normalizeCompanyId($transaction['company_id'] ?? null);
+            if ($companyId !== '') {
+                return $companyId;
+            }
+
+            $debts = $transaction['debts'] ?? [];
+            if (!is_array($debts)) {
+                return '';
+            }
+
+            foreach ($debts as $debt) {
+                if (!is_array($debt)) {
+                    continue;
+                }
+
+                $candidate = $normalizeCompanyId($debt['idempresa'] ?? null);
+                if ($candidate !== '') {
+                    return $candidate;
+                }
+            }
+
+            return '';
+        };
+
+        $companyId = $extractCompanyId(is_array($lastTransaction) ? $lastTransaction : null);
+        if ($companyId === '' && $token !== '') {
+            $transactionRecord = $flowStorage->get($token);
+            $companyId = $extractCompanyId($transactionRecord);
+        }
+
+        $service = new FlowPaymentService($configResolver->resolveByCompanyId($companyId));
         $statusData = $service->getPaymentStatus($token);
         $statusCode = (int) ($statusData['status'] ?? 0);
 
@@ -66,14 +117,24 @@ if ($token === '') {
         try {
             $ingresarPagoWsdl = (string) config_value('services.ingresar_pago_wsdl', '');
             if (trim($ingresarPagoWsdl) !== '') {
+                $villarricaWsdl = trim((string) config_value('services.ingresar_pago_wsdl_villarrica', ''));
+                if ($villarricaWsdl === '') {
+                    $villarricaWsdl = $ingresarPagoWsdl;
+                }
+
+                $gorbeaWsdl = trim((string) config_value('services.ingresar_pago_wsdl_gorbea', ''));
+                if ($gorbeaWsdl === '') {
+                    $gorbeaWsdl = $ingresarPagoWsdl;
+                }
+
                 $endpointOverrides = [
-                    '764430824' => $ingresarPagoWsdl, // Padre Las Casas (endpoint actual)
-                    '765316085' => null, // TODO: reemplazar con endpoint Villarrica
-                    '76734662K' => null, // TODO: reemplazar con endpoint Gorbea
+                    '764430824' => $ingresarPagoWsdl,
+                    '765316081' => $villarricaWsdl,
+                    '76734662K' => $gorbeaWsdl,
                 ];
 
                 $reporter = new FlowIngresarPagoReporter(
-                    new FlowTransactionStorage(__DIR__ . '/app/storage/flow'),
+                    $flowStorage,
                     new IngresarPagoService($ingresarPagoWsdl),
                     __DIR__ . '/app/logs/flow-ingresar-pago.log',
                     __DIR__ . '/app/logs/flow-ingresar-pago-error.log',
@@ -111,8 +172,7 @@ if ($token === '') {
 
             if ($rutToClear === '' && $token !== '') {
                 try {
-                    $flowStorage = new FlowTransactionStorage(__DIR__ . '/app/storage/flow');
-                    $transactionRecord = $flowStorage->get($token);
+                    $transactionRecord = $transactionRecord ?? $flowStorage->get($token);
                     if (is_array($transactionRecord) && !empty($transactionRecord['rut'])) {
                         $rutToClear = (string) $transactionRecord['rut'];
                     }

@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['token_ws'])) {
 
                     $endpointOverrides = [
                         '764430824' => $ingresarPagoWsdl,
-                        '765316085' => $villarricaWsdl,
+                        '765316081' => $villarricaWsdl,
                         '76734662K' => $gorbeaWsdl,
                     ];
 
